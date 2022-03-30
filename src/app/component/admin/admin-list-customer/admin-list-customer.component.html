@@ -1,0 +1,51 @@
+<div class="col-md-12">
+  <div class="card table-card">
+    <div class="card-header">
+      <h3>Danh sách khách hàng</h3>
+      <div class="card-header-right">
+        <ul class="list-unstyled card-option">
+          <li><i class="ik ik-chevron-left action-toggle"></i></li>
+          <li><i class="ik ik-minus minimize-card"></i></li>
+          <li><i class="ik ik-x close-card"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-block">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+          <tr>
+            <th>Tên đăng nhập</th>
+            <th>Số điện thoại</th>
+            <th>Tên khách hàng</th>
+            <th>Email</th>
+            <th>Ngày sinh</th>
+            <th>Ảnh</th>
+            <th>Địa chỉ</th>
+            <th>Hành động</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of userList">
+            <td>{{user.username}}</td>
+
+            <td>{{user.phone}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.dob}}</td>
+            <td>
+              <div class="d-inline-block align-middle">
+                <img [src]="user.avatar"  class="rounded-circle img-40 align-top mr-15">
+              </div>
+            </td>
+            <td>{{user.address}}</td>
+            <td>
+              <a (click)="updateUser(user.id)"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+              <a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

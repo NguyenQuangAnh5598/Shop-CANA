@@ -1,0 +1,2 @@
+<input type="file" (change)="showPreview($event)" #preview>
+<div> <img style="width: 100px; height: auto"  [src]="imageUrl" (click)="preview.click()" alt=""></div>

@@ -1,0 +1,75 @@
+<!-- top contact and member performance start -->
+<div class="col-xl-6 col-md-6">
+  <div class="card table-card">
+    <div class="card-header">
+      <h3>Top Contacts</h3>
+      <div class="card-header-right">
+        <ul class="list-unstyled card-option">
+          <li><i class="ik ik-chevron-left action-toggle"></i></li>
+          <li><i class="ik ik-minus minimize-card"></i></li>
+          <li><i class="ik ik-x close-card"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-block">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+          <tr>
+            <th>Company</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let order of orderList, index as i" >
+            <td>{{order?.user?.username}}</td>
+            <td  >{{order?.createTime}}</td>
+
+
+
+            <td><button (click)="acceptOrder(order.id, i)">Accecp</button></td>
+
+
+
+            <td><label class="badge badge-success">Paid</label></td>
+          </tr>
+
+
+
+
+
+          <tr>
+            <td>Envato Pvt Ltd.</td>
+            <td>20/03/2017</td>
+            <td>04/08/2019</td>
+            <td><label class="badge badge-danger">Unpaid</label></td>
+          </tr>
+          <tr>
+            <td>Dribble Company</td>
+            <td>13/05/2017</td>
+            <td>03/01/2018</td>
+            <td><label class="badge badge-success">Paid</label></td>
+          </tr>
+          <tr>
+            <td>Adobe Family</td>
+            <td>11/01/2016</td>
+            <td>02/03/2017</td>
+            <td><label class="badge badge-success">Paid</label></td>
+          </tr>
+          <tr>
+            <td>Apple Company</td>
+            <td>23/05/2017</td>
+            <td>04/08/2018</td>
+            <td><label class="badge badge-danger">Unpaid</label></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

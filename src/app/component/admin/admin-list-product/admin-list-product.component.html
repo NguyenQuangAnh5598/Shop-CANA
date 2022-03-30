@@ -1,0 +1,48 @@
+<div class="col-md-12">
+  <div class="card table-card">
+    <div class="card-header">
+      <h3>Danh sách sản phẩm</h3>
+      <div class="card-header-right">
+        <ul class="list-unstyled card-option">
+          <li><i class="ik ik-chevron-left action-toggle"></i></li>
+          <li><i class="ik ik-minus minimize-card"></i></li>
+          <li><i class="ik ik-x close-card"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-block">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+          <tr>
+            <th>Tên sản phẩm</th>
+            <th>Ảnh</th>
+            <th>Giá</th>
+            <th>Só lượng</th>
+            <th>Hãng sản xuất</th>
+            <th>Mô tả</th>
+            <th>Hành động</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor = "let product of productList">
+            <td>{{product.name}}</td>
+            <td>
+              <div class="d-inline-block align-middle">
+                <img [src]="product.image" class="rounded-circle img-40 align-top mr-15">
+              </div>
+            </td>
+            <td>{{product.price}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.manufacturer}}</td>
+            <td>{{product.description}}</td>
+
+            <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i
+              class="ik ik-trash-2 f-16 text-red"></i></a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

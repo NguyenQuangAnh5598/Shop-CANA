@@ -1,0 +1,146 @@
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="auth-wrapper">
+  <div class="container-fluid h-100">
+    <div class="row flex-row h-100 bg-white">
+      <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
+        <div class="lavalite-bg" style="background-image: url('assets/signup-login/img/auth/register-bg.jpg')">
+          <div class="lavalite-overlay"></div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
+        <div class="authentication-form mx-auto">
+          <div class="logo-centered">
+            <a href="../index.html"><img src="assets/signup-login/src/img/brand.svg" alt=""></a>
+          </div>
+          <h3>CANA Shop</h3>
+          <p>Join us today! It takes only few steps</p>
+
+
+          <!--      Form    -->
+          <form #f="ngForm" (ngSubmit)="f.form.valid && ngSubmit()" novalidate>
+            <mat-error class="alert alert-warning" style="margin-top: 10px">{{status}}</mat-error>
+
+            <!-- Name -->
+
+            <div class="form-group">
+              <input name="name"
+                     [(ngModel)]="form.name"
+                     matInput
+                     placeholder="Your Name"
+                     required
+                     minlength="6"
+                     #name="ngModel" type="text" class="form-control">
+              <mat-error *ngIf="name.hasError('required')">The nam is required!</mat-error>
+              <mat-error *ngIf="name.hasError('minlength')">Ten toi thieu 6 ky tu!</mat-error>
+              <i class="ik ik-user"></i>
+            </div>
+
+            <!--          Username-->
+            <div class="form-group">
+              <input name="username"
+                     [(ngModel)]="form.userName"
+                     matInput
+                     placeholder="User Name"
+                     required
+                     minlength="3"
+                     #username="ngModel" type="text" class="form-control">
+              <mat-error *ngIf="username.hasError('required')">The username is required!</mat-error>
+              <mat-error *ngIf="username.hasError('minlength')">Username toi thieu 3 ky tu!</mat-error>
+              <i class="ik ik-user"></i>
+            </div>
+
+            <!--email-->
+            <div class="form-group">
+              <input name="email"
+                     matInput
+                     required
+                     email=""
+                     [(ngModel)]="form.email"
+                     placeholder="Placeholder"
+                     #email="ngModel" type="text" class="form-control">
+              <mat-error *ngIf="email.hasError('required')">The email is required!</mat-error>
+              <mat-error *ngIf="email.hasError('email')">The email invalid! Ex: anhkhoaito@gmail.com</mat-error>
+              <i class="ik ik-user"></i>
+            </div>
+            <!--            password-->
+            <div class="form-group">
+              <input
+                [type]="hide ? 'password' : 'text'"
+                name="password"
+                [(ngModel)]="form.password"
+                matInput
+                placeholder="Password"
+                required
+                minlength="6"
+                #password="ngModel" class="form-control">
+              <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>
+              <mat-error *ngIf="password.hasError('minlength')">Vui long nhap toi thieu 6 ky tu!</mat-error>
+              <button color="accent" mat-icon-button matSuffix (click)="hide = !hide"
+                      [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
+                <mat-icon style="width: 150px">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+
+              <i class="ik ik-lock"></i>
+            </div>
+
+            <!--phone-->
+            <div class="form-group">
+              <input
+                name="phone"
+                [(ngModel)]="form.phoneNumber"
+                matInput
+                placeholder="Phone Number"
+                required
+                minlength="9"
+                type="text" pattern="[0-9]{9,10}"
+                #phone="ngModel" class="form-control">
+              <mat-error *ngIf="phone.hasError('required')">The phone number is required!</mat-error>
+              <mat-error *ngIf="phone.hasError('minlength')">Vui long nhap toi thieu 9 so!</mat-error>
+              <mat-error *ngIf="phone.hasError('pattern')">Vui long nhap ky tu so!</mat-error>
+              <i class="ik ik-eye-off"></i>
+            </div>
+
+            <!--address-->
+            <div class="form-group">
+              <input
+                name="address"
+                [(ngModel)]="form.address"
+                matInput
+                placeholder="Your address"
+                required
+                minlength="6"
+                type="text"
+                #address="ngModel" class="form-control">
+              <mat-error *ngIf="address.hasError('required')">The address is required!</mat-error>
+              <mat-error *ngIf="address.hasError('minlength')">Vui long nhap toi thieu 6 ky tu!</mat-error>
+              <i class="ik ik-eye-off"></i>
+            </div>
+
+
+            <div class="row">
+              <div class="col-12 text-left">
+                <label class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox"
+                         value="option1">
+                  <span class="custom-control-label">&nbsp;I Accept <a href="#">Terms and Conditions</a></span>
+                </label>
+              </div>
+            </div>
+            <div class="sign-btn text-center">
+              <button class="btn btn-theme" type="submit" style="color: whitesmoke">Create Account</button>
+            </div>
+          </form>
+          <div class="register">
+            <p>Already have an account? <a href="login.html">Sign In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
