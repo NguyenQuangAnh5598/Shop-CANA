@@ -12,6 +12,8 @@ import {AdminListCustomerComponent} from './component/admin/admin-list-customer/
 import {AdminProfileCustomerComponent} from './component/admin/admin-profile-customer/admin-profile-customer.component';
 import {CustomerProfileComponent} from './component/customer/customer-profile/customer-profile.component';
 import {CustomerPaymentComponent} from './component/customer/customer-payment/customer-payment.component';
+import {CustomerChangePasswordComponent} from './component/customer/customer-change-password/customer-change-password.component';
+import {AdminCheckOrderComponent} from './component/admin/admin-check-order/admin-check-order.component';
 
 const routes: Routes = [{
   path: '',
@@ -25,6 +27,8 @@ const routes: Routes = [{
       {path: 'customer-payment', canActivate: [AuthGuard], component: CustomerPaymentComponent},
       {path: 'customer-shop', component: CustomerShopComponent},
       {path: 'customer-product-detail/:id', component: CustomerProductDetailComponent},
+      {path: 'customer-profile', canActivate: [AuthGuard], component: CustomerProfileComponent},
+      {path: 'customer-change-password', canActivate: [AuthGuard], component: CustomerChangePasswordComponent}
     ]
   },
 
@@ -34,7 +38,8 @@ const routes: Routes = [{
   {path: 'admin-list-product', component: AdminListProductComponent},
   {path: 'admin-list-customer', component: AdminListCustomerComponent},
   {path: 'admin-profile-customer/:id', component: AdminProfileCustomerComponent},
-  {path: 'customer-profile', component: CustomerProfileComponent},
+  {path: 'admin-check-order', component: AdminCheckOrderComponent},
+  {path: 'admin-check-completed-order', component: AdminCheckOrderComponent},
 ];
 
 

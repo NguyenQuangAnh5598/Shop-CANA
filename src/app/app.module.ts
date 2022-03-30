@@ -34,6 +34,8 @@ import { CustomerChangePasswordComponent } from './component/customer/customer-c
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -58,20 +60,22 @@ import {MatButtonModule} from '@angular/material/button';
     AdminListCustomerComponent,
     CustomerChangePasswordComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        RouterModule,
-        AngularFireStorageModule,
-        HttpClientModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        FormsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        BrowserAnimationsModule,
-        MatButtonModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
+    AngularFireStorageModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+  ],
   providers: [httpInterceptorProvider],
   bootstrap: [AppComponent]
 })
