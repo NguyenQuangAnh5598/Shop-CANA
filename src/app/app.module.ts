@@ -36,6 +36,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { AdminNavbarComponent } from './component/admin/admin-navbar/admin-navbar.component';
+import { CustomerListOrderComponent } from './component/customer/customer-list-order/customer-list-order.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     AdminListProductComponent,
     AdminProfileCustomerComponent,
     AdminListCustomerComponent,
-    CustomerChangePasswordComponent
+    CustomerChangePasswordComponent,
+    AdminNavbarComponent,
+    CustomerListOrderComponent
   ],
   imports: [
     BrowserModule,
