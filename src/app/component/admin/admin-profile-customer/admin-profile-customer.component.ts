@@ -13,9 +13,9 @@ export class AdminProfileCustomerComponent implements OnInit {
   user: User = {};
 
   constructor(private userService: UserService,
-              private route: ActivatedRoute,
+              private activatedRoute: ActivatedRoute,
               private router: Router) {
-    this.route.params.subscribe((params: Params) => {
+    this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params.get('id');
       this.userService.getUserById(this.id).subscribe(user => {
         this.user = user;

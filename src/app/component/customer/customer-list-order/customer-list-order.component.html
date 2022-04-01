@@ -1,0 +1,165 @@
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+      integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous"/>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" (click)="showUnCheckOrderList()">Chờ<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" (click)="showCheckedOrderList()">Đang vận chuyển</a>
+      <a class="nav-item nav-link" (click)="showCompletedOrderList()">Đã hoàn thành</a>
+      <a class="nav-item nav-link" (click)="showCancelOrderList()">Đã hủy</a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <div class="career-search mb-60">
+        <div class="filter-result">
+
+
+          <div *ngFor="let order of orderList , index as i"
+               class="job-box d-md-flex align-items-center justify-content-between mb-30">
+            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+              <div class="job-content">
+                <h5 class="text-center text-md-left">{{order.user.name}}</h5>
+                <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                  <li class="mr-md-4">
+                    <i class="zmdi zmdi-pin mr-2"></i>{{order.user.address}}
+                  </li>
+                  <li class="mr-md-4">
+                    <i class="zmdi zmdi-money mr-2"></i>{{order.totalPrice}}
+                  </li>
+                  <li class="mr-md-4">
+                    <i class="zmdi zmdi-time mr-2"></i>{{order.createTime}}
+                  </li>
+                  <li class="mr-md-4">
+                    <i class="zmdi zmdi-time mr-2"></i>{{status}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="job-right my-4 flex-shrink-0">
+              <a *ngIf="order.statusId == 2" (click)="cancelOrder(order.id, i)"
+                 class="btn d-block w-100 d-sm-inline-block btn-light">Hủy đơn</a>
+            </div>
+            <div class="job-right my-4 flex-shrink-0">
+              <a routerLink="/home/order-detail/{{order.id}}" class="btn d-block w-100 d-sm-inline-block btn-light">Detail</a>
+            </div>
+          </div>
+
+
+          <!--          <div class="job-box d-md-flex align-items-center justify-content-between mb-30">-->
+          <!--            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">-->
+          <!--              <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">-->
+          <!--                UX-->
+          <!--              </div>-->
+          <!--              <div class="job-content">-->
+          <!--                <h5 class="text-center text-md-left">Ui/Ux Developer</h5>-->
+          <!--                <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">-->
+          <!--                  <li class="mr-md-4">-->
+          <!--                    <i class="zmdi zmdi-pin mr-2"></i> Los Angeles-->
+          <!--                  </li>-->
+          <!--                  <li class="mr-md-4">-->
+          <!--                    <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm-->
+          <!--                  </li>-->
+          <!--                  <li class="mr-md-4">-->
+          <!--                    <i class="zmdi zmdi-time mr-2"></i> Full Time-->
+          <!--                  </li>-->
+          <!--                </ul>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--            <div class="job-right my-4 flex-shrink-0">-->
+          <!--              <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>-->
+          <!--            </div>-->
+          <!--          </div>-->
+
+          <!--          <div class="job-box d-md-flex align-items-center justify-content-between mb-30">-->
+          <!--            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">-->
+          <!--              <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">-->
+          <!--                GD-->
+          <!--              </div>-->
+          <!--              <div class="job-content">-->
+          <!--                <h5 class="text-center text-md-left">Graphic Designer</h5>-->
+          <!--                <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">-->
+          <!--                  <li class="mr-md-4">-->
+          <!--                    <i class="zmdi zmdi-pin mr-2"></i> Los Angeles-->
+          <!--                  </li>-->
+          <!--                  <li class="mr-md-4">-->
+          <!--                    <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm-->
+          <!--                  </li>-->
+          <!--                  <li class="mr-md-4">-->
+          <!--                    <i class="zmdi zmdi-time mr-2"></i> Full Time-->
+          <!--                  </li>-->
+          <!--                </ul>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--            <div class="job-right my-4 flex-shrink-0">-->
+          <!--              <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>-->
+          <!--            </div>-->
+          <!--          </div>-->
+
+          <!--          <div class="job-box d-md-flex align-items-center justify-content-between mb-30">-->
+          <!--            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">-->
+          <!--              <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">-->
+          <!--                JS-->
+          <!--              </div>-->
+          <!--              <div class="job-content">-->
+          <!--                <h5 class="text-center text-md-left">Javascript Developer</h5>-->
+          <!--                <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">-->
+          <!--                  <li class="mr-md-4">-->
+          <!--                    <i class="zmdi zmdi-pin mr-2"></i> Los Angeles-->
+          <!--                  </li>-->
+          <!--                  <li class="mr-md-4">-->
+          <!--                    <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm-->
+          <!--                  </li>-->
+          <!--                  <li class="mr-md-4">-->
+          <!--                    <i class="zmdi zmdi-time mr-2"></i> Full Time-->
+          <!--                  </li>-->
+          <!--                </ul>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--            <div class="job-right my-4 flex-shrink-0">-->
+          <!--              <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>-->
+          <!--            </div>-->
+          <!--          </div>-->
+
+          <!--        </div>-->
+          <!--      </div>-->
+
+          <!-- START Pagination -->
+          <nav aria-label="Page navigation">
+            <ul class="pagination pagination-reset justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                  <i class="zmdi zmdi-long-arrow-left"></i>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item d-none d-md-inline-block"><a class="page-link" href="#">2</a></li>
+              <li class="page-item d-none d-md-inline-block"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">...</a></li>
+              <li class="page-item"><a class="page-link" href="#">8</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">
+                  <i class="zmdi zmdi-long-arrow-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- END Pagination -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
