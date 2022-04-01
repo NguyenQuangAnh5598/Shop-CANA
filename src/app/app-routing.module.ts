@@ -15,6 +15,7 @@ import {CustomerPaymentComponent} from './component/customer/customer-payment/cu
 import {CustomerChangePasswordComponent} from './component/customer/customer-change-password/customer-change-password.component';
 import {AdminCheckOrderComponent} from './component/admin/admin-check-order/admin-check-order.component';
 import {CustomerListOrderComponent} from './component/customer/customer-list-order/customer-list-order.component';
+import {OrderDetailComponent} from './component/customer/order-detail/order-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,7 +31,8 @@ const routes: Routes = [{
       {path: 'customer-product-detail/:id', component: CustomerProductDetailComponent},
       {path: 'customer-profile', canActivate: [AuthGuard], component: CustomerProfileComponent},
       {path: 'customer-change-password', canActivate: [AuthGuard], component: CustomerChangePasswordComponent},
-      {path: 'customer-list-order', component: CustomerListOrderComponent}
+      {path: 'customer-list-order', canActivate: [AuthGuard], component: CustomerListOrderComponent},
+      {path: 'order-detail/:id', component: OrderDetailComponent}
 
     ]
   },

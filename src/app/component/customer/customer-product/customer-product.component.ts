@@ -38,6 +38,7 @@ export class CustomerProductComponent implements OnInit {
       this.orderDetailService.createNewOrderDetail(this.orderDetail).subscribe();
       alert('Thêm vào rỏ hàng thành công');
     } else {
+      alert('Xin hãy đăng nhập');
       this.router.navigate(['/login']);
     }
 

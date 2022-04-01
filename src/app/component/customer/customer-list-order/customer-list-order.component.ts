@@ -58,9 +58,9 @@ export class CustomerListOrderComponent implements OnInit {
   }
 
   cancelOrder(id: number, index: any): void {
-    this.orderService.cancelOrderByOrderId(id).subscribe(() =>
-    alert('Đã hủy đơn hàng thành công'));
-    this.orderList.splice(index, 1);
-    console.log(this.orderList);
+    this.orderService.cancelOrderByOrderId(id).subscribe(() => {
+      alert('Đã hủy đơn hàng');
+      this.orderList.splice(index, 1);
+    });
   }
 }

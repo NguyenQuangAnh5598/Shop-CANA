@@ -38,6 +38,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { AdminNavbarComponent } from './component/admin/admin-navbar/admin-navbar.component';
 import { CustomerListOrderComponent } from './component/customer/customer-list-order/customer-list-order.component';
+import { OrderDetailComponent } from './component/customer/order-detail/order-detail.component';
+import { AdminCreateProductComponent } from './component/admin/admin-create-product/admin-create-product.component';
+import { AdminEditProductComponent } from './component/admin/admin-edit-product/admin-edit-product.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { CustomerListOrderComponent } from './component/customer/customer-list-o
     AdminListCustomerComponent,
     CustomerChangePasswordComponent,
     AdminNavbarComponent,
-    CustomerListOrderComponent
+    CustomerListOrderComponent,
+    OrderDetailComponent,
+    AdminCreateProductComponent,
+    AdminEditProductComponent
   ],
   imports: [
     BrowserModule,
