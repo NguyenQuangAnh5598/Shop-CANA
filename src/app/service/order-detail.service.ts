@@ -25,4 +25,13 @@ export class OrderDetailService {
   findById(id: number): Observable<OrderDetail> {
     return this.http.get<OrderDetail>(API_LOCAL + 'orderdetail/' + id);
   }
+
+  // findAll(): Observable<OrderDetail[]> {
+  //   return this.http.get<OrderDetail[]>(API_LOCAL + 'orderdetail');
+  // }
+
+  // tslint:disable-next-line:typedef
+  deleteOrderDetail(id: number){
+    return this.http.delete(API_LOCAL + 'orderdetail/' + id);
+  }
 }

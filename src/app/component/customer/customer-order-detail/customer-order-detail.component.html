@@ -1,13 +1,15 @@
-<td class="align-middle"><img src="{{orderDetail?.product?.image}}" alt="" style="width: 50px;">{{orderDetail?.product?.name}}</td>
+<td class="align-middle"><img src="{{orderDetail?.product?.image}}" alt=""
+                              style="width: 50px;">{{orderDetail?.product?.name}}</td>
 <td class="align-middle">{{orderDetail?.product?.price}}</td>
 <td class="align-middle">
   <div class="input-group quantity mx-auto" style="width: 100px;">
     <div class="input-group-btn">
-      <button class="btn btn-sm btn-primary btn-minus" >
+      <button class="btn btn-sm btn-primary btn-minus">
         <i class="fa fa-minus"></i>
       </button>
     </div>
-    <input (change)="update()" type="text" class="form-control form-control-sm bg-secondary text-center" [(ngModel)]="orderDetail.orderQuantity">
+    <input (change)="update()" type="text" class="form-control form-control-sm bg-secondary text-center"
+           [(ngModel)]="orderDetail.orderQuantity">
     <div class="input-group-btn">
       <button class="btn btn-sm btn-primary btn-plus">
         <i class="fa fa-plus"></i>
@@ -16,4 +18,26 @@
   </div>
 </td>
 <td class="align-middle">>save</td>
-<td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
+<td class="align-middle">
+  <button data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-sm btn-primary"><i
+    class="fa fa-times"></i></button>
+</td>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa sản phẩm này không??
+      </div>
+      <div class="modal-footer">
+        <button (click)="deleteOrderDetail(orderDetail.id)" data-dismiss="modal"  type="button" class="btn btn-primary" style="border-radius: 3px;height: 40px;width: 100px;">Đồng ý</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius: 3px;height: 40px;width: 100px;">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

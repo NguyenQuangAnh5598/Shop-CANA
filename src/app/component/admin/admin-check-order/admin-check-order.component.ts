@@ -21,7 +21,6 @@ export class AdminCheckOrderComponent implements OnInit {
     this.orderService.findAllOrderByStatusId(2).subscribe(data => {
       this.orderList = data;
       console.log(data);
-
     });
   }
 

@@ -35,4 +35,9 @@ export class UserService {
   userChangePassword(userPasswordDTO: UserPasswordDTO): Observable<UserPasswordDTO> {
     return this.http.put<UserPasswordDTO>(API_LOCAL + 'user/changePassword', userPasswordDTO);
   }
+
+  // tslint:disable-next-line:typedef
+  deleteCustomer(id: number){
+    return this.http.delete(API_LOCAL + 'user/' + id);
+  }
 }
