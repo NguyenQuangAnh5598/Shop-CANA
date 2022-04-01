@@ -12,6 +12,7 @@ import {AdminListCustomerComponent} from './component/admin/admin-list-customer/
 import {AdminProfileCustomerComponent} from './component/admin/admin-profile-customer/admin-profile-customer.component';
 import {CustomerProfileComponent} from './component/customer/customer-profile/customer-profile.component';
 import {CustomerPaymentComponent} from './component/customer/customer-payment/customer-payment.component';
+import {CustomerOrderDetailComponent} from './component/customer/customer-order-detail/customer-order-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -25,6 +26,8 @@ const routes: Routes = [{
       {path: 'customer-payment', canActivate: [AuthGuard], component: CustomerPaymentComponent},
       {path: 'customer-shop', component: CustomerShopComponent},
       {path: 'customer-product-detail/:id', component: CustomerProductDetailComponent},
+      {path: 'admin-list-product', component: AdminListProductComponent},
+      {path: 'admin-list-customer', component: AdminListCustomerComponent},
     ]
   },
 

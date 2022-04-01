@@ -41,7 +41,26 @@
             <td>{{user.address}}</td>
             <td>
               <a (click)="updateUser(user.id)"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
-              <a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
+              <a data-toggle="modal" data-target="#exampleModalCenter" ><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Bạn có muốn xóa user này không??
+                  </div>
+                  <div class="modal-footer">
+                    <button (click)="deleteCustomer(user.id)" data-dismiss="modal"  type="button" class="btn btn-primary" style="border-radius: 3px;height: 40px;width: 100px;">Đồng ý</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius: 3px;height: 40px;width: 100px;">Đóng</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </tr>
           </tbody>
         </table>

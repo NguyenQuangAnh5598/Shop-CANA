@@ -35,7 +35,7 @@ export class CustomerShopComponent implements OnInit {
   //   });
   // }
 
-  showAllProductByPage2(s?: any) {
+  showAllProductByPage2(s?: any): void {
     let pageNum;
     if (s != null) {
       pageNum = '?page=' + s;

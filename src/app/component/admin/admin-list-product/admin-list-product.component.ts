@@ -24,4 +24,12 @@ export class AdminListProductComponent implements OnInit {
       this.productList = productList;
     });
   }
+
+  // tslint:disable-next-line:typedef
+  deleteProduct(id: number) {
+    this.productService.deleteProduct(id).subscribe(() => {
+      this.findProductList();
+      }
+    );
+  }
 }
