@@ -10,7 +10,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./admin-list-product.component.scss']
 })
 export class AdminListProductComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'image', 'price', 'quantity', 'manufacturer', 'description', 'category'];
+  displayedColumns: string[] = ['name', 'image', 'price', 'quantity', 'manufacturer', 'description', 'category', 'action'];
   dataSource: any;
   productList: Product[] = [];
 
@@ -30,5 +30,13 @@ export class AdminListProductComponent implements OnInit {
       console.log(this.dataSource);
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  deleteProduct(id: number) {
+    this.productService.deleteProduct(id).subscribe(() => {
+      this.findProductList();
+      }
+    );
   }
 }

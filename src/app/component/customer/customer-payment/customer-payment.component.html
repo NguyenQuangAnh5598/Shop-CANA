@@ -55,8 +55,7 @@
             <button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button>
           </td>
         </tr>
-        <tr *ngFor="let orderDetail of orderDetailList"
-        >
+        <tr *ngFor="let orderDetail of orderDetailList">
           <app-customer-order-detail [orderDetail]="orderDetail"
                                      (orderDetailChange)="update($event)"></app-customer-order-detail>
         </tr>
