@@ -16,6 +16,8 @@ import {CustomerChangePasswordComponent} from './component/customer/customer-cha
 import {AdminCheckOrderComponent} from './component/admin/admin-check-order/admin-check-order.component';
 import {CustomerListOrderComponent} from './component/customer/customer-list-order/customer-list-order.component';
 import {OrderDetailComponent} from './component/customer/order-detail/order-detail.component';
+import {AdminEditProductComponent} from './component/admin/admin-edit-product/admin-edit-product.component';
+import {AdminCreateProductComponent} from './component/admin/admin-create-product/admin-create-product.component';
 
 const routes: Routes = [{
   path: '',
@@ -45,7 +47,9 @@ const routes: Routes = [{
   {path: 'admin-profile-customer/:id', component: AdminProfileCustomerComponent},
   {path: 'admin-check-order', component: AdminCheckOrderComponent},
   {path: 'admin-check-completed-order', component: AdminCheckOrderComponent},
-  {path: 'customer-list-order', component: CustomerListOrderComponent}
+  {path: 'customer-list-order', component: CustomerListOrderComponent},
+  {path: 'admin-create-product', component: AdminCreateProductComponent},
+  {path: 'admin-edit-product/:id', component: AdminEditProductComponent}
 ];
 
 
