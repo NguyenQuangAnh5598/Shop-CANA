@@ -34,6 +34,7 @@ import { CustomerChangePasswordComponent } from './component/customer/customer-c
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import {MatButtonModule} from '@angular/material/button';
         AngularFireModule.initializeApp(environment.firebaseConfig),
         BrowserAnimationsModule,
         MatButtonModule,
+      Ng2SearchPipeModule
     ],
   providers: [httpInterceptorProvider],
   bootstrap: [AppComponent]

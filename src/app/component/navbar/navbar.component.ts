@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import firebase from 'firebase';
+import {CategoryService} from '../../service/category.service';
+import {Category} from '../../model/Category';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  @Output() searchByname = new EventEmitter();
+  searchText;
+
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
   }
+  searchProductByname(): void {
+    this.searchByname.emit(this.searchText);
+  }
+
+
 
 }
