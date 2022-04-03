@@ -4,6 +4,7 @@ import {OrderDetail} from '../model/OrderDetail';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Order} from '../model/Order';
+import {DateTimeDTO} from '../model/DateTimeDTO';
 
 const API_LOCAL = `${environment.API_LOCAL}`;
 
@@ -39,5 +40,10 @@ export class OrderService {
 
   cancelOrderByOrderId(id: number): Observable<any> {
     return this.http.delete<any>(API_LOCAL + 'order/cancelOrder/' + id);
+  }
+
+  getOrderByTime(dateTimeDTO: DateTimeDTO): Observable<any> {
+    console.log('aaaaaaaaaaaaaaa' + dateTimeDTO);
+    return this.http.put<any>(API_LOCAL + 'order/statisticalOrderByTime', dateTimeDTO);
   }
 }

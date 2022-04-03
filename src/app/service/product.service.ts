@@ -26,7 +26,7 @@ export class ProductService {
   }
 
   findById(id: number): Observable<Product> {
-    return this.http.get<Product>(API_LOCAL + 'product/' + id);
+    return this.http.get<Product>(API_LOCAL + 'product' + id);
   }
 
   // tslint:disable-next-line:typedef

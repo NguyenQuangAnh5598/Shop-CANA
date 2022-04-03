@@ -17,7 +17,7 @@ import {LoginComponent} from './component/signup-login/login/login.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatInput, MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomerHomePageComponent } from './component/customer/customer-home-page/customer-home-page.component';
 import { CustomerOrderDetailComponent } from './component/customer/customer-order-detail/customer-order-detail.component';
 import { CustomerPaymentComponent } from './component/customer/customer-payment/customer-payment.component';
@@ -41,6 +41,11 @@ import { CustomerListOrderComponent } from './component/customer/customer-list-o
 import { OrderDetailComponent } from './component/customer/order-detail/order-detail.component';
 import { AdminCreateProductComponent } from './component/admin/admin-create-product/admin-create-product.component';
 import { AdminEditProductComponent } from './component/admin/admin-edit-product/admin-edit-product.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { AdminRevenueComponent } from './component/admin/admin-revenue/admin-revenue.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +73,9 @@ import { AdminEditProductComponent } from './component/admin/admin-edit-product/
     CustomerListOrderComponent,
     OrderDetailComponent,
     AdminCreateProductComponent,
-    AdminEditProductComponent
+    AdminEditProductComponent,
+    AdminRevenueComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +92,11 @@ import { AdminEditProductComponent } from './component/admin/admin-edit-product/
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
+    NgxPaginationModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
+
   ],
   providers: [httpInterceptorProvider],
   bootstrap: [AppComponent]
