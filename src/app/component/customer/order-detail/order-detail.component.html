@@ -1,57 +1,157 @@
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-  $(function() {
-    $("#sortable").sortable();
-    $("#sortable").disableSelection();
-  });
-</script>
-<div class="page-content page-container" id="page-content">
-  <div class="padding">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="container-fluid d-flex justify-content-center">
-          <div class="list list-row card" id="sortable" data-sortable-id="0" aria-dropeffect="move">
+<div class="container py-5">
+  <div class="row text-center text-white mb-5">
+    <div class="col-lg-7 mx-auto">
+      <h1 class="display-4">Product List</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
 
 
-
-
-            <div *ngFor="let orderDetail of orderDetailList, index as i" class="list-item" data-id="13" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false" style="">
-             <div>No.{{i+1}}</div>
-              <div><span class="w-40 avatar gd-primary"><img [src]="orderDetail.product.image"></span></div>
-              <div class="flex">{{orderDetail.product.name}}
-                <div class="item-except text-muted text-sm h-1x">Quantity: {{orderDetail.orderQuantity}}</div>
+      <!-- List group-->
+      <ul *ngFor="let orderDetail of orderDetailList | paginate: { itemsPerPage: 2, currentPage: p }, index as i"
+          class="list-group shadow">
+        <!-- list group item-->
+        <li class="list-group-item">
+          <!-- Custom content-->
+          <div>No.{{i}}</div>
+          <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+            <div class="media-body order-2 order-lg-1">
+              <h3 class="mt-0 font-weight-bold mb-2">{{orderDetail.product.name}}</h3>
+              <div class="d-flex align-items-center justify-content-between mt-1">
+                <h6 class="font-italic text-muted mb-0 small">Hãng: {{orderDetail.product.manufacturer}}</h6>
+                <h6 class="font-italic text-muted mb-0 small" >{{orderDetail.product.description}}</h6>
               </div>
-              <div class="flex">Hãng sản xuất
-                <div class="item-except text-muted text-sm h-1x">{{orderDetail.product.manufacturer}}</div>
-              </div>
-              <div class="no-wrap">
-                <div class="item-date text-muted text-sm d-none d-md-block">${{orderDetail.product.price}}/per1</div>
-              </div>
-              <div>
-                <div class="item-action dropdown"> <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                  <circle cx="12" cy="12" r="1"></circle>
-                  <circle cx="12" cy="5" r="1"></circle>
-                  <circle cx="12" cy="19" r="1"></circle>
-                </svg> </a>
-                  <div class="dropdown-menu dropdown-menu-right bg-black" role="menu"> <a class="dropdown-item" href="#" data-abc="true">See detail </a><a class="dropdown-item download" data-abc="true">Download </a><a class="dropdown-item edit" data-abc="true">Edit</a>
-                    <div class="dropdown-divider"></div> <a class="dropdown-item trash" data-abc="true">Delete item</a>
-                  </div>
-                </div>
+              <div class="d-flex align-items-center justify-content-between mt-1">
+                <h6 class="font-weight-bold my-2">Quantity: {{orderDetail.product.quantity}}</h6>
+                <h6 class="font-weight-bold my-2">$${{orderDetail.product.price}}/per1</h6>
+                <ul class="list-inline small">
+                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                </ul>
               </div>
             </div>
-            <section>
-              <div class="example-button-row">
-                <button routerLink="/home/customer-list-order" mat-stroked-button><mat-icon>exit_to_app</mat-icon></button>
-              </div>
-            </section>
-<!--            <div class="list-item" data-id="3" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false">-->
-<!--              <div><a href="#" data-abc="true"><span class="w-40 avatar gd-primary"><img src="https://img.icons8.com/bubbles/16/000000/administrator-male.png" alt="."></span></a></div>-->
-<!--              <div class="flex"> <a href="#" class="item-author text-color" data-abc="true">Jordan Stephens</a>-->
-<!--                <div class="item-except text-muted text-sm h-1x">For what reason would it be advisable for me to think about business</div>-->
+            <img [src]="orderDetail.product.image" alt="Generic placeholder image" style=" width: 120px; height: 180px"
+                 class="ml-lg-5 order-1 order-lg-2">
+          </div> <!-- End -->
+        </li> <!-- End -->
+      </ul> <!-- End -->
+      <pagination-controls (pageChange)="p = $event"></pagination-controls> <button routerLink="/home/customer-list-order" mat-stroked-button><mat-icon>exit_to_app</mat-icon></button>
+
+
+
+      <!--        <ul  class="list-group shadow">-->
+      <!-- list group item -->
+      <!--        <li class="list-group-item">-->
+      <!--          &lt;!&ndash; Custom content&ndash;&gt;-->
+      <!--          <div class="media align-items-lg-center flex-column flex-lg-row p-3">-->
+      <!--            <div class="media-body order-2 order-lg-1">-->
+      <!--              <h5 class="mt-0 font-weight-bold mb-2">OnePlus 7 Pro (Almond, 256 GB)</h5>-->
+      <!--              <p class="font-italic text-muted mb-0 small">Rear Camera|48MP (Primary)+ 8MP (Tele-photo)+16MP-->
+      <!--                (ultrawide)| Front Camera|16 MP POP-UP Camera|8GB RAM|Android pie</p>-->
+      <!--              <div class="d-flex align-items-center justify-content-between mt-1">-->
+      <!--                <h6 class="font-weight-bold my-2">₹ 52,999</h6>-->
+      <!--                <ul class="list-inline small">-->
+      <!--                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>-->
+      <!--                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>-->
+      <!--                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>-->
+      <!--                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>-->
+      <!--                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>-->
+      <!--                </ul>-->
+      <!--              </div>-->
+      <!--            </div>-->
+      <!--            <img src="https://i.imgur.com/6IUbEME.jpg" alt="Generic placeholder image" width="200"-->
+      <!--                 class="ml-lg-5 order-1 order-lg-2">-->
+      <!--          </div> &lt;!&ndash; End &ndash;&gt;-->
+      <!--        </li> &lt;!&ndash; End &ndash;&gt;-->
+      <!--        </ul>-->
+
+
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="col-md-12">-->
+<!--  <div class="card table-card">-->
+<!--    <div class="card-header">-->
+<!--      <h3>Danh sách sản phẩm</h3>-->
+<!--      <div class="card-header-right">-->
+<!--        <ul class="list-unstyled card-option">-->
+<!--          <li><i class="ik ik-chevron-left action-toggle"></i></li>-->
+<!--          <li><i class="ik ik-minus minimize-card"></i></li>-->
+<!--          <li><i class="ik ik-x close-card"></i></li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card-block">-->
+<!--      <div class="table-responsive">-->
+<!--        <table class="table table-hover mb-0">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th>Tên sản phẩm</th>-->
+<!--            <th>Ảnh</th>-->
+<!--            <th>Giá</th>-->
+<!--            <th>Só lượng</th>-->
+<!--            <th>Hãng sản xuất</th>-->
+<!--            <th>Mô tả</th>-->
+<!--            <th>Hành động</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr *ngFor = "let product of productList">-->
+<!--            <td>{{product.name}}</td>-->
+<!--            <td>-->
+<!--              <div class="d-inline-block align-middle">-->
+<!--                <img [src]="product.image" class="rounded-circle img-40 align-top mr-15">-->
+<!--              </div>-->
+<!--            </td>-->
+<!--            <td>{{product.price}}</td>-->
+<!--            <td>{{product.quantity}}</td>-->
+<!--            <td>{{product.manufacturer}}</td>-->
+<!--            <td>{{product.description}}</td>-->
+
+<!--            <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i-->
+<!--              class="ik ik-trash-2 f-16 text-red"></i></a></td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+<!--<script>-->
+<!--  $(function() {-->
+<!--    $("#sortable").sortable();-->
+<!--    $("#sortable").disableSelection();-->
+<!--  });-->
+<!--</script>-->
+<!--<div class="page-content page-container" id="page-content">-->
+<!--  <div class="padding">-->
+<!--    <div class="row">-->
+<!--      <div class="col-sm-8">-->
+<!--        <div class="container-fluid d-flex justify-content-center">-->
+<!--          <div class="list list-row card" id="sortable" data-sortable-id="0" aria-dropeffect="move">-->
+
+
+<!--            <div *ngFor="let orderDetail of orderDetailList, index as i" class="list-item" data-id="13" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false" style="">-->
+<!--             <div>No.{{i+1}}</div>-->
+<!--              <div><span class="w-40 avatar gd-primary"><img [src]="orderDetail.product.image"></span></div>-->
+<!--              <div class="flex">{{orderDetail.product.name}}-->
+<!--                <div class="item-except text-muted text-sm h-1x">Quantity: {{orderDetail.orderQuantity}}</div>-->
+<!--              </div>-->
+<!--              <div class="flex">Hãng sản xuất-->
+<!--                <div class="item-except text-muted text-sm h-1x">{{orderDetail.product.manufacturer}}</div>-->
 <!--              </div>-->
 <!--              <div class="no-wrap">-->
-<!--                <div class="item-date text-muted text-sm d-none d-md-block">1 hour ago</div>-->
+<!--                <div class="item-date text-muted text-sm d-none d-md-block">${{orderDetail.product.price}}/per1</div>-->
 <!--              </div>-->
 <!--              <div>-->
 <!--                <div class="item-action dropdown"> <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">-->
@@ -65,10 +165,15 @@
 <!--                </div>-->
 <!--              </div>-->
 <!--            </div>-->
-          </div>
+<!--            <section>-->
+<!--              <div class="example-button-row">-->
+<!--                <button routerLink="/home/customer-list-order" mat-stroked-button><mat-icon>exit_to_app</mat-icon></button>-->
+<!--              </div>-->
+<!--            </section>-->
+<!--          </div>-->
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

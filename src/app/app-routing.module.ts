@@ -16,8 +16,11 @@ import {CustomerChangePasswordComponent} from './component/customer/customer-cha
 import {AdminCheckOrderComponent} from './component/admin/admin-check-order/admin-check-order.component';
 import {CustomerListOrderComponent} from './component/customer/customer-list-order/customer-list-order.component';
 import {OrderDetailComponent} from './component/customer/order-detail/order-detail.component';
-import {AdminEditProductComponent} from './component/admin/admin-edit-product/admin-edit-product.component';
+import {AdminHomeComponent} from './component/admin/admin-home/admin-home.component';
 import {AdminCreateProductComponent} from './component/admin/admin-create-product/admin-create-product.component';
+import {AdminRevenueComponent} from './component/admin/admin-revenue/admin-revenue.component';
+import {AdminCheckCompletedOrderComponent} from './component/admin/admin-check-completed-order/admin-check-completed-order.component';
+import {AdminEditProductComponent} from './component/admin/admin-edit-product/admin-edit-product.component';
 
 const routes: Routes = [{
   path: '',
@@ -35,19 +38,23 @@ const routes: Routes = [{
       {path: 'customer-change-password', canActivate: [AuthGuard], component: CustomerChangePasswordComponent},
       {path: 'customer-list-order', canActivate: [AuthGuard], component: CustomerListOrderComponent},
       {path: 'order-detail/:id', component: OrderDetailComponent}
-
     ]
+  },
+  {path: 'admin-home', component: AdminHomeComponent,
+  children: [
+    {path: '', component: AdminListCustomerComponent},
+    {path: 'admin-list-product', component: AdminListProductComponent},
+    {path: 'admin-check-order', component: AdminCheckOrderComponent},
+    {path: 'admin-check-completed-order', component: AdminCheckCompletedOrderComponent},
+    {path: 'admin-create-product', component: AdminCreateProductComponent},
+    {path: 'admin-revenue', component : AdminRevenueComponent}
+  ]
   },
 
 
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'admin-list-product', component: AdminListProductComponent},
-  {path: 'admin-list-customer', component: AdminListCustomerComponent},
   {path: 'admin-profile-customer/:id', component: AdminProfileCustomerComponent},
-  {path: 'admin-check-order', component: AdminCheckOrderComponent},
-  {path: 'admin-check-completed-order', component: AdminCheckOrderComponent},
-  {path: 'customer-list-order', component: CustomerListOrderComponent},
   {path: 'admin-create-product', component: AdminCreateProductComponent},
   {path: 'admin-edit-product/:id', component: AdminEditProductComponent}
 ];

@@ -11,6 +11,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 export class OrderDetailComponent implements OnInit {
   orderDetailList: OrderDetail[] = [];
   orderId = 1;
+  p = 1;
 
   constructor(private orderService: OrderService,
               private activatedRoute: ActivatedRoute) {

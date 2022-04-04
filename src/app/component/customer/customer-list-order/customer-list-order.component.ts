@@ -12,6 +12,7 @@ export class CustomerListOrderComponent implements OnInit {
   userId = 0;
   orderList: Order[] = [];
   status = 'dasadsad';
+  p = 1;
 
   constructor(private orderService: OrderService,
               private tokenService: TokenService) {
