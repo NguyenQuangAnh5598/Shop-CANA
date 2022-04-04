@@ -9,18 +9,21 @@ import {Product} from '../../model/Product';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  searchText ?: string ;
+  searchText = '';
   child ?: any;
   id = '';
+  minPrice = '';
+  maxPrice = '';
   constructor(private productService: ProductService
   ) { }
   ngOnInit(): void {
   }
   searchName(value): void{
     this.searchText = value;
-    this.productService.findByName(this.searchText, this.id).subscribe(productList => {
-      this.child.productList = productList;
-    });
+    console.log(this.child.id, this.child.minPrice, this.child.maxPrice, this.searchText);
+    this.productService.findByName(this.searchText, this.child.id, this.child.minPrice, this.child.maxPrice).subscribe(productList => {
+        this.child.productList = productList;
+      });
   }
   Onactivate(id): void {
     // this.showAllProductByPage2(id);

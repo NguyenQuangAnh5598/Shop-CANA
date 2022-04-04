@@ -24,8 +24,8 @@ export class ProductService {
   updateProduct(product: Product): Observable<Product> {
     return this.http.put<Product>(API_LOCAL + 'product', product);
   }
-  findByName(name: string, id: any): Observable<Product[]> {
-    return this.http.get<Product[]>(API_LOCAL + 'product/searchProduct?name=' + name + '&&id=' + id);
+  findByName(name: string, id: any, minPrice: any, maxPrice: any): Observable<Product[]> {
+    return this.http.get<Product[]>(API_LOCAL + 'product/searchProduct?name=' + name + '&&id=' + id + '&&minPrice=' + minPrice + '&&maxPrice=' + maxPrice);
   }
 
   findById(id: number): Observable<Product> {

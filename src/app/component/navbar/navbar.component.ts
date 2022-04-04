@@ -11,7 +11,7 @@ import {Category} from '../../model/Category';
 export class NavbarComponent implements OnInit {
 
   @Output() searchByname = new EventEmitter();
-  searchText;
+  searchText = '';
 
   constructor(private categoryService: CategoryService) { }
 

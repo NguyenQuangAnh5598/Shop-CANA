@@ -10,6 +10,11 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./customer-shop.component.scss']
 })
 export class CustomerShopComponent implements OnInit {
+  list = [{ id : 1, price: '40000-50000'},
+    { id : 2, price: '50000-60000'},
+    { id : 3, price: '300-400'},
+    { id : 4, price: '400-500'}];
+  a = [];
   productList: Product[] = [];
   page: any;
   search: any ;
@@ -17,6 +22,8 @@ export class CustomerShopComponent implements OnInit {
   categoryList: Category[] = [];
   id = '';
   searchText = '';
+  minPrice = '';
+  maxPrice = '';
   constructor(private productService: ProductService,
               private categoryService: CategoryService,
               private activatedRoute: ActivatedRoute) {
@@ -36,15 +43,44 @@ export class CustomerShopComponent implements OnInit {
       this.categoryList = categoryList ;
     });
   }
+  onChangeDefault(event: any): void{
+    this.maxPrice = '';
+    this.minPrice = '';
+    this.productService.findByName(this.searchText, this.id, this.minPrice, this.maxPrice).subscribe(data => {
+      this.productList = data;
+    });
+  }
   change(e): void{
     this.id = e.target.value;
     // console.log(e);
-    this.productService.findByName(this.searchText, this.id).subscribe(productList => {
-      this.productList = productList;
-    });
+    if (this.id === '0'){
+      this.productService.findByName(this.searchText, '', this.minPrice, this.maxPrice).subscribe(productList => {
+        this.productList = productList;
+      });
+    }
+    else{
+      this.productService.findByName(this.searchText, this.id, this.minPrice, this.maxPrice).subscribe(productList => {
+        this.productList = productList;
+      });
+    }
+  }
+  searchByPrice(event: any): void{
+    if (event.target.checked){
+      this.a = event.target.value.split('-');
+      // a = event.target.value
+      this.minPrice = this.a[0];
+      this.maxPrice = this.a[1];
+      this.productService.findByName(this.searchText, this.id, this.minPrice, this.maxPrice).subscribe(data => {
+        this.productList = data;
+      });
+    }
+    else{
+      this.maxPrice = '';
+      this.minPrice = '';
+    }
   }
   showAllProduct(): void {
-    this.productService.findByName(this.searchText, this.id).subscribe(productList => {
+    this.productService.findAll().subscribe(productList => {
       this.productList = productList;
     });
   }
