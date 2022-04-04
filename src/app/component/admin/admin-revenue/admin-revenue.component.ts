@@ -11,6 +11,8 @@ import {DateTimeDTO} from '../../../model/DateTimeDTO';
   styleUrls: ['./admin-revenue.component.scss']
 })
 export class AdminRevenueComponent implements OnInit {
+  status: string;
+  count = 0;
   dateTimeDTO: DateTimeDTO = {};
   orderList: Order[] = [];
   displayedColumns: string[] = ['name', 'totalprice', 'time', 'action'];
@@ -28,11 +30,14 @@ export class AdminRevenueComponent implements OnInit {
   }
 
   findCompletedOrderList(): void {
+    this.status = 'Tổng doanh thu';
     this.orderService.findAllOrderByStatusId(4).subscribe(data => {
       this.orderList = data;
       console.log(this.orderList);
+      this.count = this.orderList.length;
       this.dataSource = new MatTableDataSource<Order>(this.orderList);
       this.dataSource.paginator = this.paginator;
+      this.totalPrice = 0;
       this.getSumOfOrderTotalPrice();
     });
   }
@@ -46,13 +51,32 @@ export class AdminRevenueComponent implements OnInit {
   }
 
   getOrderListByDate(): void {
+    this.status = 'Tổng doanh thu';
     this.dateTimeDTO.startDate = this.startDate;
     this.dateTimeDTO.endDate = this.endDate;
     console.log(this.dateTimeDTO);
     this.orderService.getOrderByTime(this.dateTimeDTO).subscribe(data => {
+      this.orderList = data;
       this.dataSource = new MatTableDataSource<Order>(data);
       this.dataSource.paginator = this.paginator;
       console.log(this.dataSource);
+      this.totalPrice = 0;
+      this.getSumOfOrderTotalPrice();
+      this.count = this.orderList.length;
     });
   }
+
+  findCancelOrderList(): void {
+    this.status = 'Tổng';
+    this.orderService.findAllOrderByStatusId(5).subscribe(data => {
+      this.orderList = data;
+      console.log(this.orderList);
+      this.count = this.orderList.length;
+      this.dataSource = new MatTableDataSource<Order>(this.orderList);
+      this.dataSource.paginator = this.paginator;
+      this.totalPrice = 0;
+      this.getSumOfOrderTotalPrice();
+    });
+  }
+
 }
