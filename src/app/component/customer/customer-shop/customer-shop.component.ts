@@ -50,20 +50,6 @@ export class CustomerShopComponent implements OnInit {
       this.productList = data;
     });
   }
-  change(e): void{
-    this.id = e.target.value;
-    // console.log(e);
-    if (this.id === '0'){
-      this.productService.findByName(this.searchText, '', this.minPrice, this.maxPrice).subscribe(productList => {
-        this.productList = productList;
-      });
-    }
-    else{
-      this.productService.findByName(this.searchText, this.id, this.minPrice, this.maxPrice).subscribe(productList => {
-        this.productList = productList;
-      });
-    }
-  }
   searchByPrice(event: any): void{
     if (event.target.checked){
       this.a = event.target.value.split('-');
@@ -79,6 +65,21 @@ export class CustomerShopComponent implements OnInit {
       this.minPrice = '';
     }
   }
+  change(e): void{
+    if (e.target.value === '0'){
+      this.id = '';
+      this.productService.findByName(this.searchText, this.id, this.minPrice, this.maxPrice).subscribe(productList => {
+        this.productList = productList;
+      });
+    }
+    else{
+      this.id = e.target.value;
+      this.productService.findByName(this.searchText, this.id, this.minPrice, this.maxPrice).subscribe(productList => {
+        this.productList = productList;
+      });
+    }
+  }
+
   showAllProduct(): void {
     this.productService.findAll().subscribe(productList => {
       this.productList = productList;

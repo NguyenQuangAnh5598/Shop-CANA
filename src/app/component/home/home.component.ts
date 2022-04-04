@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit{
   }
   searchName(value): void{
     this.searchText = value;
-    console.log(this.child.id, this.child.minPrice, this.child.maxPrice, this.searchText);
     this.productService.findByName(this.searchText, this.child.id, this.child.minPrice, this.child.maxPrice).subscribe(productList => {
         this.child.productList = productList;
       });
