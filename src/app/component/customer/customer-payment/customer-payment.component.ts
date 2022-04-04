@@ -14,7 +14,7 @@ import {OrderDetail} from '../../../model/OrderDetail';
 })
 export class CustomerPaymentComponent implements OnInit {
   order: Order = {};
-
+  totalPrice = 0;
   userId = 0;
   orderId = 0;
   orderDetailList: OrderDetail[] = [];
@@ -29,9 +29,11 @@ export class CustomerPaymentComponent implements OnInit {
     console.log(this.userId);
     this.userService.findCurrentOrder(this.userId).subscribe(order => {
       this.orderId = order.id;
-      this.orderService.findAllByOrder(order.id).subscribe(orderDetailList =>
-        this.orderDetailList = orderDetailList);
-      console.log(this.orderDetailList);
+      this.orderService.findAllByOrder(order.id).subscribe(orderDetailList => {
+        this.orderDetailList = orderDetailList;
+        console.log(this.orderDetailList);
+        this.getSum();
+      });
     });
   }
 
@@ -44,6 +46,12 @@ export class CustomerPaymentComponent implements OnInit {
     console.log(orderDetail);
     alert('orderDetail quantity changed');
   }
+getSum(): void {
+  // tslint:disable-next-line:prefer-for-of
+  for (let i = 0; i < this.orderDetailList.length; i++) {
+    this.totalPrice += (this.orderDetailList[i].product.price * this.orderDetailList[i].orderQuantity);
+  }
+}
 
   payment(): void {
     this.orderService.payment(this.orderId).subscribe(() => {

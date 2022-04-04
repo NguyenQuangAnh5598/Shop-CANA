@@ -29,25 +29,6 @@ export class HomeComponent implements OnInit{
     // this.showProductByName(id);
     this.child = id;
   }
-  // showProductByName(id): void{
-  //   this.productService.findByName(this.searchText).subscribe(productList => {
-  //     id.productList = productList;
-  //   });
-  // }
-  // showAllProductByPage2(a?: any, s?: any): void {
-  //   let pageNum;
-  //   if (s != null) {
-  //     pageNum = '?page=' + s;
-  //   } else {
-  //     pageNum = '';
-  //   }
-  //   this.productService.showAllProductByPage(pageNum).subscribe(data => {
-  //     a.productList = data.content;
-  //     a.page = data;
-  //     // tslint:disable-next-line:radix
-  //     a.count = parseInt(String(data.number / 3)) * 3;
-  //   });
-  // }
 
 
 }
