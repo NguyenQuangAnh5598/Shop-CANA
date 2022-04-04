@@ -20,6 +20,7 @@ import {AdminHomeComponent} from './component/admin/admin-home/admin-home.compon
 import {AdminCreateProductComponent} from './component/admin/admin-create-product/admin-create-product.component';
 import {AdminRevenueComponent} from './component/admin/admin-revenue/admin-revenue.component';
 import {AdminCheckCompletedOrderComponent} from './component/admin/admin-check-completed-order/admin-check-completed-order.component';
+import {AdminEditProductComponent} from './component/admin/admin-edit-product/admin-edit-product.component';
 
 const routes: Routes = [{
   path: '',
@@ -54,6 +55,8 @@ const routes: Routes = [{
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'admin-profile-customer/:id', component: AdminProfileCustomerComponent},
+  {path: 'admin-create-product', component: AdminCreateProductComponent},
+  {path: 'admin-edit-product/:id', component: AdminEditProductComponent}
 ];
 
 
