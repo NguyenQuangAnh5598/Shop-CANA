@@ -1,8 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import firebase from 'firebase';
 import {CategoryService} from '../../service/category.service';
-import {Category} from '../../model/Category';
 import {TokenService} from '../../service/token.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +15,8 @@ export class NavbarComponent implements OnInit {
   searchText = '';
 
   constructor(private categoryService: CategoryService,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private router: Router) {
     this.token = this.tokenService.getToken();
   }
 
@@ -27,5 +27,10 @@ export class NavbarComponent implements OnInit {
     this.searchByname.emit(this.searchText);
   }
 
+  logout(): void {
+    this.tokenService.logout();
+    window.location.reload();
+    this.router.navigate(['/home']);
+  }
 
 }
