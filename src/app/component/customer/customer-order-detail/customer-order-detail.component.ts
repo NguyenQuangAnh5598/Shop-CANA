@@ -17,6 +17,7 @@ export class CustomerOrderDetailComponent implements OnInit {
   orderDetailList: OrderDetail[] = [];
   @Output()
   orderDetailChange: EventEmitter<OrderDetail> = new EventEmitter<OrderDetail>();
+  orderDetailListChange: EventEmitter<OrderDetail[]> = new EventEmitter<OrderDetail[]>();
 
   constructor(private orderDetailService: OrderDetailService,
               private orderService: OrderService,
