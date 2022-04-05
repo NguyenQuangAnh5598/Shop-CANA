@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
         this.tokenService.setUserId(data.id);
         console.log(data.roles);
         // tslint:disable-next-line:triple-equals
-        if (data.roles[0] == 'admin') {
-          this.router.navigate(['/home-admin']).then(() => {
+        if (data.roles[0] == 'ADMIN') {
+          this.router.navigate(['/admin-home']).then(() => {
             window.location.reload();
           });
         } else {
