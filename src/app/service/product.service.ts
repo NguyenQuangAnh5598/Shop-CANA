@@ -40,4 +40,8 @@ export class ProductService {
   showAllProductByPage(pageNum: string): Observable<any> {
     return this.http.get<any>(API_LOCAL + 'product/page' + pageNum);
   }
+
+  getTop3Product(): Observable<any> {
+    return this.http.get<any>(API_LOCAL + 'product/top3BestSale');
+  }
 }
