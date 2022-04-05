@@ -39,24 +39,16 @@ export class CustomerPaymentComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  update(orderDetail: OrderDetail): void {
-    console.log(orderDetail);
-    this.orderDetailService.updateOrderDetail(orderDetail).subscribe();
-    console.log(orderDetail);
-    alert('orderDetail quantity changed');
-  }
 getSum(): void {
   // tslint:disable-next-line:prefer-for-of
   for (let i = 0; i < this.orderDetailList.length; i++) {
     this.totalPrice += (this.orderDetailList[i].product.price * this.orderDetailList[i].orderQuantity);
   }
 }
-
   payment(): void {
     this.orderService.payment(this.orderId).subscribe(() => {
       alert('Đặt hàng thành công, hãy chờ');
-      this.router.navigate(['/customer-order-list']);
+      this.router.navigate(['/customer-list-order']);
     });
   }
 }
