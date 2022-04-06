@@ -40,4 +40,5 @@ export class CustomerProfileComponent implements OnInit {
   uploadFile(event): void {
     this.user.avatar = event;
   }
+
 }
