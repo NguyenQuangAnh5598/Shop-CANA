@@ -38,9 +38,9 @@ export class LoginComponent implements OnInit {
         this.tokenService.setRole(data.roles);
         this.tokenService.setAvatar(data.avatar);
         this.tokenService.setUserId(data.id);
-        console.log(data.roles);
+        console.log(data.roles[0].authority);
         // tslint:disable-next-line:triple-equals
-        if (data.roles[0] == 'ADMIN') {
+        if (data.roles[0].authority == 'ADMIN') {
           this.router.navigate(['/admin-home']).then(() => {
             window.location.reload();
           });
