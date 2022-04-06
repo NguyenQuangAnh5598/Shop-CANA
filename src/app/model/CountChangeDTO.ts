@@ -1,8 +1,8 @@
 export class CountChangeDTO {
   id?: number;
-  status?: boolean;
+  status?: string;
 
-  constructor(id?: number, status?: boolean) {
+  constructor(id?: number, status?: string) {
     this.id = id;
     this.status = status;
   }

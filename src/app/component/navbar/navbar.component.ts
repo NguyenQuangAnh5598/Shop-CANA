@@ -20,6 +20,7 @@ count: any;
               private tokenService: TokenService,
               private router: Router) {
     this.token = this.tokenService.getToken();
+    console.log(this.tokenService.getRole());
   }
 
   ngOnInit(): void {

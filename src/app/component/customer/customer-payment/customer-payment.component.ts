@@ -6,6 +6,8 @@ import {OrderDetailService} from '../../../service/order-detail.service';
 import {Router} from '@angular/router';
 import {Order} from '../../../model/Order';
 import {OrderDetail} from '../../../model/OrderDetail';
+import {CountChangeDTO} from '../../../model/CountChangeDTO';
+import {EmitService} from '../../../service/emit.service';
 
 @Component({
   selector: 'app-customer-payment',
@@ -18,12 +20,16 @@ export class CustomerPaymentComponent implements OnInit {
   userId = 0;
   orderId = 0;
   orderDetailList: OrderDetail[] = [];
+  error: any = {
+    message: '403'
+  };
 
   constructor(private orderService: OrderService,
               private tokenService: TokenService,
               private userService: UserService,
               private orderDetailService: OrderDetailService,
-              private router: Router
+              private router: Router,
+              private emitService: EmitService
   ) {
     this.userId = this.tokenService.getUserId();
     console.log(this.userId);
@@ -48,9 +54,19 @@ export class CustomerPaymentComponent implements OnInit {
   }
 
   payment(): void {
-    this.orderService.payment(this.orderId).subscribe(() => {
-      alert('Đặt hàng thành công, hãy chờ');
-      this.router.navigate(['home/customer-list-order']);
+    this.orderService.payment(this.orderId).subscribe(data => {
+      const countChange = new CountChangeDTO();
+      countChange.id = -1;
+      countChange.status = 'payment';
+      this.emitService.emitChange(countChange);
+      console.log(data);
+      if (JSON.stringify(data) === JSON.stringify(this.error)) {
+        console.log(true);
+        this.router.navigate(['/error']);
+      }else {
+        alert('Đặt hàng thành công, hãy chờ');
+        this.router.navigate(['home/customer-list-order']);
+      }
     });
   }
 }
