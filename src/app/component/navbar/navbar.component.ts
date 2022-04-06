@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CategoryService} from '../../service/category.service';
 import {TokenService} from '../../service/token.service';
 import { Router} from '@angular/router';
+import {OrderDetail} from '../../model/OrderDetail';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,8 @@ import { Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   token: any;
+  @Input()
+count: any;
   @Output() searchByname = new EventEmitter();
   searchText = '';
 
