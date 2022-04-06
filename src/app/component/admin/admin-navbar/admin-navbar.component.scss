@@ -31,3 +31,12 @@
 body {
   background-color: #eee;
 }
+.navbar_link{
+  margin:10px!important;
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+}
+.navbar_link:hover{
+  background: #2e6da4;
+  border-radius: 4px;
+}
