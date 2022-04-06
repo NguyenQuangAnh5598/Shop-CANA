@@ -5,6 +5,8 @@ import {OrderDetailService} from '../../../service/order-detail.service';
 import {TokenService} from '../../../service/token.service';
 import {Router} from '@angular/router';
 import {OrderDetail} from '../../../model/OrderDetail';
+import {EmitService} from '../../../service/emit.service';
+import {CountChangeDTO} from '../../../model/CountChangeDTO';
 
 @Component({
   selector: 'app-customer-home-page',
@@ -19,7 +21,8 @@ export class CustomerHomePageComponent implements OnInit {
   constructor(private orderDetailService: OrderDetailService,
               private tokenService: TokenService,
               private router: Router,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private emitService: EmitService) {
   }
 
   ngOnInit(): void {
@@ -44,7 +47,12 @@ export class CustomerHomePageComponent implements OnInit {
         productId: this.productId,
       };
       console.log(this.orderDetail);
-      this.orderDetailService.createNewOrderDetail(this.orderDetail).subscribe();
+      this.orderDetailService.createNewOrderDetail(this.orderDetail).subscribe( data => {
+        const countChange = new CountChangeDTO();
+        countChange.id = data.id;
+        countChange.status = true;
+        this.emitService.emitChange(countChange);
+      });
       alert('Thêm vào rỏ hàng thành công');
     } else {
       alert('Xin hãy đăng nhập');
