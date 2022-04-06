@@ -70,8 +70,10 @@ export class HomeComponent implements OnInit {
   onchange(data: any): void{
     if (data.id == null) {
       this.count++;
-    }else if (!data.status) {
+    }else if (data.status === 'minus') {
       this.count--;
+    }else if (data.status === 'payment') {
+      this.count = 0;
     }
   }
 }

@@ -68,11 +68,11 @@ export class CustomerOrderDetailComponent implements OnInit {
 
   deleteOrderDetail(id: number, index: any): void {
     this.orderDetailService.deleteOrderDetail(id).subscribe(() => {
-        const countChange = new CountChangeDTO();
-        countChange.id = 1;
-        countChange.status = false;
-        this.emitService.emitChange(countChange);
-      });
+      const countChange = new CountChangeDTO();
+      countChange.id = 1;
+      countChange.status = 'minus';
+      this.emitService.emitChange(countChange);
+    });
     this.orderDetailList.splice(index, 1);
   }
 }
