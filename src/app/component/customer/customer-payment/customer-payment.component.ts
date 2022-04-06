@@ -50,7 +50,7 @@ export class CustomerPaymentComponent implements OnInit {
   payment(): void {
     this.orderService.payment(this.orderId).subscribe(() => {
       alert('Đặt hàng thành công, hãy chờ');
-      this.router.navigate(['/customer-list-order']);
+      this.router.navigate(['home/customer-list-order']);
     });
   }
 }
