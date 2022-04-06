@@ -26,6 +26,7 @@ export class CustomerProductDetailComponent implements OnInit {
               private tokenService: TokenService,
               private emitService: EmitService,
               private router: Router) {
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.productId = params.id;
       productService.findById(this.productId).subscribe(data =>
@@ -34,6 +35,7 @@ export class CustomerProductDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.findProductById();
   }
 
   createOrderDetail(): void {
@@ -53,6 +55,20 @@ export class CustomerProductDetailComponent implements OnInit {
     } else {
       alert('Xin hãy đăng nhập');
       this.router.navigate(['/login']);
+    }
+  }
+
+  findProductById(): void {
+    this.productId = this.activatedRoute.snapshot.params.id;
+    this.productService.findById(this.productId).subscribe(data => {
+      this.product = data;
+    });
+  }
+
+  checkQuantity(): void {
+    if (this.orderQuantity > this.product.quantity) {
+      alert('Số lượng sản phẩm không đủ!!');
+      this.orderQuantity = this.product.quantity;
     }
   }
 }
