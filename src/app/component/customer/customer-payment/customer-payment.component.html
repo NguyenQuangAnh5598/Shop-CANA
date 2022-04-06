@@ -44,7 +44,7 @@
             <h5 class="font-weight-bold">Tổng tiền</h5>
             <h5 class="font-weight-bold" >{{totalPrice + (totalPrice*10)/100}}</h5>
           </div>
-          <button routerLink="" class="btn btn-block btn-primary my-3 py-3" style="height: 50px; border-radius: 5px;line-height: 10px;">Tiến hành thanh toán</button>
+          <button (click)="payment()" class="btn btn-block btn-primary my-3 py-3" style="height: 50px; border-radius: 5px;line-height: 10px;">Tiến hành thanh toán</button>
         </div>
       </div>
     </div>
