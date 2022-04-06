@@ -11,11 +11,11 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./customer-shop.component.scss']
 })
 export class CustomerShopComponent implements OnInit {
-  list = [{id: 1, price: '10-20'},
-    {id: 2, price: '20-30'},
-    {id: 3, price: '30-50'},
-    {id: 4, price: '50-100'},
-    {id: 5, price: '100-500'}];
+  list = [{id: 1, price: '10 - 20'},
+    {id: 2, price: '20 - 30'},
+    {id: 3, price: '30 - 50'},
+    {id: 4, price: '50 - 100'},
+    {id: 5, price: '100 - 500'}];
   a = [];
   p = 1;
   productList: Product[] = [];
