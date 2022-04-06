@@ -10,7 +10,6 @@ import { Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   token: any;
-
   @Output() searchByname = new EventEmitter();
   searchText = '';
 

@@ -23,7 +23,7 @@
 
           <!--      Form    -->
           <form #f="ngForm" (ngSubmit)="f.form.valid && ngSubmit()" novalidate>
-            <mat-error class="alert alert-warning" style="margin-top: 10px">{{status}}</mat-error>
+            <mat-error  style="margin-top: 10px">{{status}}</mat-error>
 
             <!-- Name -->
 
@@ -45,7 +45,7 @@
               <input name="username"
                      [(ngModel)]="form.userName"
                      matInput
-                     placeholder="User Name"
+                     placeholder="Your UserName"
                      required
                      minlength="3"
                      #username="ngModel" type="text" class="form-control">
@@ -59,12 +59,12 @@
               <input name="email"
                      matInput
                      required
-                     email=""
+                     email
                      [(ngModel)]="form.email"
-                     placeholder="Placeholder"
+                     placeholder="Your Email"
                      #email="ngModel" type="text" class="form-control">
               <mat-error *ngIf="email.hasError('required')">The email is required!</mat-error>
-              <mat-error *ngIf="email.hasError('email')">The email invalid! Ex: anhkhoaito@gmail.com</mat-error>
+              <mat-error *ngIf="email.hasError('email')">The email invalid! Ex: anh@gmail.com</mat-error>
               <i class="ik ik-user"></i>
             </div>
             <!--            password-->
@@ -97,12 +97,10 @@
                 matInput
                 placeholder="Phone Number"
                 required
-                minlength="9"
                 type="text" pattern="[0-9]{9,10}"
                 #phone="ngModel" class="form-control">
               <mat-error *ngIf="phone.hasError('required')">The phone number is required!</mat-error>
-              <mat-error *ngIf="phone.hasError('minlength')">Vui long nhap toi thieu 9 so!</mat-error>
-              <mat-error *ngIf="phone.hasError('pattern')">Vui long nhap ky tu so!</mat-error>
+              <mat-error *ngIf="phone.hasError('pattern')">Vui long nhạp ky tu so, toi thieu 9, toi da 10 ky tu</mat-error>
               <i class="ik ik-eye-off"></i>
             </div>
 
