@@ -29,11 +29,8 @@ export class AdminCheckCompletedOrderComponent implements OnInit {
     console.log(id);
     this.orderService.checkOrder(id).subscribe(() => {
       alert('Đơn hàng đã được giao hoàn tất');
-
       this.orderList.splice(index, 1);
       console.log(this.orderList);
-
     });
-
   }
 }

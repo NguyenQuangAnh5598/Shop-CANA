@@ -56,6 +56,5 @@ export class CustomerProductComponent implements OnInit {
       alert('Xin hãy đăng nhập');
       this.router.navigate(['/login']);
     }
-
   }
 }
