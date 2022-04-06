@@ -29,7 +29,7 @@ export class ProductService {
   }
 
   findById(id: number): Observable<Product> {
-    return this.http.get<Product>(API_LOCAL + 'product' + id);
+    return this.http.get<Product>(API_LOCAL + 'product/' + id);
   }
 
   // tslint:disable-next-line:typedef
@@ -39,5 +39,9 @@ export class ProductService {
 
   showAllProductByPage(pageNum: string): Observable<any> {
     return this.http.get<any>(API_LOCAL + 'product/page' + pageNum);
+  }
+
+  getTop3Product(): Observable<any> {
+    return this.http.get<any>(API_LOCAL + 'product/top3BestSale');
   }
 }

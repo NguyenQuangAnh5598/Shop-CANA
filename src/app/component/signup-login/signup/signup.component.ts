@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {SignupForm} from '../../../model/SignupForm';
 import {AuthService} from '../../../service/auth.service';
 import {Router} from '@angular/router';
+import {stringify} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  status = 'Please fill in the form to register!';
+  status: string;
   hide = true;
   form: any = {};
   subscription: Subscription;
