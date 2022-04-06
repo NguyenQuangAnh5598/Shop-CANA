@@ -5,6 +5,8 @@ import {ProductService} from '../../../service/product.service';
 import {OrderDetailService} from '../../../service/order-detail.service';
 import {Product} from '../../../model/Product';
 import {TokenService} from '../../../service/token.service';
+import {EmitService} from '../../../service/emit.service';
+import {CountChangeDTO} from '../../../model/CountChangeDTO';
 
 @Component({
   selector: 'app-customer-product-detail',
@@ -22,9 +24,10 @@ export class CustomerProductDetailComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private orderDetailService: OrderDetailService,
               private tokenService: TokenService,
+              private emitService: EmitService,
               private router: Router) {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.productId = params.get('id');
+      this.productId = params.id;
       productService.findById(this.productId).subscribe(data =>
         this.product = data);
     });
@@ -40,10 +43,14 @@ export class CustomerProductDetailComponent implements OnInit {
         productId: this.productId,
       };
       console.log(this.orderDetail);
-      this.orderDetailService.createNewOrderDetail(this.orderDetail).subscribe();
+      this.orderDetailService.createNewOrderDetail(this.orderDetail).subscribe(data => {
+        const countChange = new CountChangeDTO();
+        countChange.id = data.id;
+        countChange.status = true;
+        this.emitService.emitChange(countChange);
+      });
       alert('Thêm vào rỏ hàng thành công');
-    }
-    else {
+    } else {
       alert('Xin hãy đăng nhập');
       this.router.navigate(['/login']);
     }

@@ -10,14 +10,14 @@
     </tr>
     </thead>
     <tbody class="align-middle">
-    <tr *ngFor="let orderDetail of orderDetailList">
+    <tr *ngFor="let orderDetail of orderDetailList, index as i">
       <td class="align-middle"><img src="{{orderDetail?.product?.image}}" alt=""
                                     style="width: 50px;">{{orderDetail?.product?.name}}</td>
       <td class="align-middle">{{orderDetail?.product?.price}}</td>
       <td class="align-middle">
         <div class="input-group quantity mx-auto" style="width: 100px;">
           <div class="input-group-btn">
-            <button class="btn btn-sm btn-primary btn-minus" (click)="updateMinus(orderDetail)" >
+            <button class="btn btn-sm btn-primary btn-minus" (click)="updateMinus(orderDetail, i)" >
               <i class="fa fa-minus"></i>
             </button>
           </div>
@@ -49,7 +49,7 @@
               Bạn có muốn xóa sản phẩm này không??
             </div>
             <div class="modal-footer">
-              <button  data-dismiss="modal" (click)="deleteOrderDetail(orderDetail.id)"  type="button" class="btn btn-primary" style="border-radius: 3px;height: 40px;width: 100px;">Đồng ý</button>
+              <button  data-dismiss="modal" (click)="deleteOrderDetail(orderDetail.id, i)"  type="button" class="btn btn-primary" style="border-radius: 3px;height: 40px;width: 100px;">Đồng ý</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius: 3px;height: 40px;width: 100px;">Đóng</button>
             </div>
           </div>
