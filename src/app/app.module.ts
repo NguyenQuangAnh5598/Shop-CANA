@@ -46,6 +46,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { AdminOrderDetailListComponent } from './component/admin/admin-order-detail-list/admin-order-detail-list.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AdminCreateProductComponent,
     AdminEditProductComponent,
     AdminRevenueComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    AdminOrderDetailListComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,7 @@ import {AdminCreateProductComponent} from './component/admin/admin-create-produc
 import {AdminRevenueComponent} from './component/admin/admin-revenue/admin-revenue.component';
 import {AdminCheckCompletedOrderComponent} from './component/admin/admin-check-completed-order/admin-check-completed-order.component';
 import {AdminEditProductComponent} from './component/admin/admin-edit-product/admin-edit-product.component';
+import {AdminOrderDetailListComponent} from './component/admin/admin-order-detail-list/admin-order-detail-list.component';
 
 const routes: Routes = [{
   path: '',
@@ -47,7 +48,8 @@ const routes: Routes = [{
     {path: 'admin-check-order', component: AdminCheckOrderComponent},
     {path: 'admin-check-completed-order', component: AdminCheckCompletedOrderComponent},
     {path: 'admin-create-product', component: AdminCreateProductComponent},
-    {path: 'admin-revenue', component : AdminRevenueComponent}
+    {path: 'admin-revenue', component : AdminRevenueComponent},
+    {path: 'admin-order-detail-list/:id', component : AdminOrderDetailListComponent}
   ]
   },
 
