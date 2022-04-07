@@ -12,11 +12,12 @@ export class NavbarComponent implements OnInit {
   token: any;
   @Output() searchByname = new EventEmitter();
   searchText = '';
-
+  name = '';
   constructor(private categoryService: CategoryService,
               private tokenService: TokenService,
               private router: Router) {
     this.token = this.tokenService.getToken();
+    this.name = this.tokenService.getName();
   }
 
   ngOnInit(): void {

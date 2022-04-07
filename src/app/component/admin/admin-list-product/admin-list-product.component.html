@@ -1,7 +1,41 @@
-<div class="col-md-12">
+<div class="col-md-11" style="margin: auto">
+  <div class="col-lg-12 col-12 text-left">
+    <form action="">
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput value="" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-1.5">
+          <mat-form-field appearance="fill">
+            <mat-label>State</mat-label>
+            <mat-select [(ngModel)]="selectedValue " name="category">
+              <mat-option [value] = "0"> None</mat-option>
+              <mat-option *ngFor="let category of categoryList" [value] = "category.id">{{category.categoryName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-2">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Min price</mat-label>
+            <input matInput  value="" [(ngModel)]="minPrice" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-2">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Max price</mat-label>
+            <input matInput value="" [(ngModel)]="maxPrice" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+      </div>
+      <button (click)="searchProduct()" type="submit" class="btn btn-primary" style="margin-bottom: 16px;margin-left: 10px; padding-bottom: 30px;">Search product</button>
+    </form>
+  </div>
   <div class="card table-card">
     <div class="card-header">
-      <h3>Danh sách sản phẩm</h3>
+      <h2 style="margin: auto;font-weight: 450;font-size: 25px" >Danh sách sản phẩm</h2>
       <div class="card-header-right">
         <ul class="list-unstyled card-option">
           <li><i class="ik ik-chevron-left action-toggle"></i></li>

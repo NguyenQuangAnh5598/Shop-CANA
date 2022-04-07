@@ -46,6 +46,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -77,27 +78,28 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AdminRevenueComponent,
     AdminHomeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    AngularFireStorageModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    NgxPaginationModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        AngularFireStorageModule,
+        HttpClientModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        FormsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        MatSelectModule
 
-  ],
+    ],
   providers: [httpInterceptorProvider],
   bootstrap: [AppComponent]
 })
