@@ -91,21 +91,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-    <div class="navbar-nav mr-auto py-0">
+    <div class="navbar-nav mr-auto py-0" (click)="onButtonClick($event)">
 
 
       <a (click)="findCompletedOrderList()" class="nav-item nav-link active">Đơn Hoàn Thành</a>
 
 
       <a (click)="findCancelOrderList()" class="nav-item nav-link">Đơn Bị Hủy</a>
-      <a routerLink="/home/customer-list-order" class="nav-item nav-link">Orders</a>
-      <div class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Information</a>
-        <div class="dropdown-menu rounded-0 m-0">
-          <a routerLink="/home/customer-profile" class="dropdown-item">Profile</a>
-          <a routerLink="/home/customer-change-password" class="dropdown-item">Change Password</a>
-        </div>
-      </div>
+<!--      <div class="nav-item dropdown">-->
+<!--        <div class="dropdown-menu rounded-0 m-0">-->
+<!--          <a routerLink="/home/customer-profile" class="dropdown-item">Profile</a>-->
+<!--          <a routerLink="/home/customer-change-password" class="dropdown-item">Change Password</a>-->
+<!--        </div>-->
+<!--      </div>-->
       <!--            <a href="contact.html" class="nav-item nav-link">Contact</a>-->
     </div>
 <!--    <div class="navbar-nav ml-auto py-0">-->
