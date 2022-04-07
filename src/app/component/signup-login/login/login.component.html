@@ -15,13 +15,12 @@
           <div class="logo-centered" style="width: 200px">
             <h2>Đăng nhập </h2>
           </div>
-          <form #f="ngForm" (ngSubmit)= "f.form.valid && ngSubmit()" novalidate class="example-form">
+          <form #f="ngForm"  novalidate class="example-form">
             <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
               <mat-label>Username</mat-label>
-              <input name="username"
-                     [(ngModel)]="form.userName"
+              <input name="userName"
+                     [(ngModel)]="form.name"
                      matInput
-                     name="userName"
                      placeholder="Your UserName"
                      required
                      minlength="3"
