@@ -1,82 +1,83 @@
-<div class="row">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header"><h3>Add New Product</h3></div>
-      <div class="card-body">
-        <form #f="ngForm" (ngSubmit)="f.form.valid && createNewProduct()" class="forms-sample">
+<div class="col-md-11" style="margin: auto;">
+      <div class="card">
+        <div class="card-header"><h3 style="margin: auto;font-weight: 450;font-size: 25px">Add New Product</h3></div>
+        <div class="card-body">
+          <form #f="ngForm" (ngSubmit)="f.form.valid && createNewProduct()" class="forms-sample">
 
-          <!--------------    name -------------------->
-          <div class="form-group">
-            <label for="exampleInputName1">Product Name</label>
-            <input [(ngModel)]="form.name" [ngModelOptions]="{standalone: true}" matInput name="name" type="text"
-                   class="form-control" id="exampleInputName1" placeholder="Product Name">
-          </div>
+            <!--------------    name -------------------->
+            <div class="form-group">
+              <label for="exampleInputName1">Product Name</label>
+              <input [(ngModel)]="form.name" [ngModelOptions]="{standalone: true}" matInput name="name" type="text"
+                     class="form-control" id="exampleInputName1" placeholder="Product Name">
+            </div>
 
 
-          <div class="row">
+            <div class="row">
 
-            <!--            Price---------->
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="price">Price</label>
-                <input [(ngModel)]="form.price" [ngModelOptions]="{standalone: true}" matInput name="price" type="text"
-                       class="form-control" id="price" placeholder="$$">
+              <!--            Price---------->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input [(ngModel)]="form.price" [ngModelOptions]="{standalone: true}" matInput name="price" type="text"
+                         class="form-control" id="price" placeholder="$$">
+                </div>
+              </div>
+              <!--   ------------------    Category---------------->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="category">Category</label>
+                  <select [(ngModel)]="form.category" name="category" required class="form-control" id="category">
+                    <option *ngFor="let category of categoryList" [value]="category.id">{{category.categoryName}}</option>
+                  </select>
+                </div>
               </div>
             </div>
-            <!--   ------------------    Category---------------->
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="category">Category</label>
-                <select [(ngModel)]="form.category" name="category" required class="form-control" id="category">
-                  <option *ngFor="let category of categoryList" [value]="category.id">{{category.categoryName}}</option>
-                </select>
+
+
+            <div class="row">
+
+              <!--            Quantity---------->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <input [(ngModel)]="form.quantity" [ngModelOptions]="{standalone: true}" matInput name="quantity"
+                         type="text" class="form-control" id="quantity" placeholder="">
+                </div>
+              </div>
+              <!--   ------------------    manufacturer---------------->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="manufacturer">Manufacturer</label>
+                  <input [(ngModel)]="form.manufacturer" [ngModelOptions]="{standalone: true}" matInput
+                         name="manufacturer" type="text" class="form-control" id="manufacturer"
+                         placeholder="Manufacturer">
+                </div>
               </div>
             </div>
-          </div>
 
 
-          <div class="row">
+            <!---------------       description  ---------------- -->
 
-            <!--            Quantity---------->
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="quantity">Quantity</label>
-                <input [(ngModel)]="form.quantity" [ngModelOptions]="{standalone: true}" matInput name="quantity"
-                       type="text" class="form-control" id="quantity" placeholder="$$">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input [(ngModel)]="form.description" [ngModelOptions]="{standalone: true}" matInput name="description"
+                     type="text" class="form-control" id="description" placeholder="description">
+            </div>
+            <!------------------------------image------------------>
+            <div class="form-group">
+              <label>Product Image</label>
+              <div class="input-group col-xs-12">
+                <app-upload-file (giveUrl)="uploadFile($event)"></app-upload-file>
               </div>
             </div>
-            <!--   ------------------    manufacturer---------------->
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="manufacturer">Manufacturer</label>
-                <input [(ngModel)]="form.manufacturer" [ngModelOptions]="{standalone: true}" matInput
-                       name="manufacturer" type="text" class="form-control" id="manufacturer"
-                       placeholder="Manufacturer">
-              </div>
-            </div>
-          </div>
 
 
-          <!---------------       description  ---------------- -->
-
-          <div class="form-group">
-            <label for="description">Description</label>
-            <input [(ngModel)]="form.description" [ngModelOptions]="{standalone: true}" matInput name="description"
-                   type="text" class="form-control" id="description" placeholder="description">
-          </div>
-          <!------------------------------image------------------>
-          <div class="form-group">
-            <label>Product Image</label>
-            <div class="input-group col-xs-12">
-              <app-upload-file (giveUrl)="uploadFile($event)"></app-upload-file>
-            </div>
-          </div>
-
-
-          <button type="submit" class="btn btn-primary mr-2">Save</button>
-          <button routerLink="" class="btn btn-light">Cancel</button>
-        </form>
+            <button type="submit" class="btn btn-primary mr-2">Save</button>
+            <button routerLink="" class="btn btn-light">Cancel</button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
+
+

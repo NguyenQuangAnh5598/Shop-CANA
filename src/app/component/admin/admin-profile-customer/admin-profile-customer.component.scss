@@ -94,3 +94,14 @@ body{
   color: #0062cc;
 }
 
+.profile-edit-btn:hover{
+  background-color: #3e8e41;
+  color: white;
+}
+.linkhover{
+  transition: 0.3s;
+}
+.linkhover:hover{
+  background-color:#E6E6FA;
+  color: white;
+}
