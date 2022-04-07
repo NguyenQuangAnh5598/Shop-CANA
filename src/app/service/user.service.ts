@@ -40,4 +40,7 @@ export class UserService {
   deleteCustomer(id: number){
     return this.http.delete(API_LOCAL + 'user/' + id);
   }
+  searchUserByName(name: string): Observable<User[]> {
+    return this.http.get<User[]>(API_LOCAL + 'user/findUserByUsernameOrEmail/' + name);
+  }
 }
