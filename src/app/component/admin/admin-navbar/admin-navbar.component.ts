@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenService} from '../../../service/token.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -6,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-navbar.component.scss']
 })
 export class AdminNavbarComponent implements OnInit {
+  token: any;
+  name = '';
+  constructor(private tokenService: TokenService,
+              private router: Router) {
+    this.token = this.tokenService.getToken();
 
-  constructor() { }
-
+    this.name = this.tokenService.getName();
+  }
   ngOnInit(): void {
   }
   onButtonClick($e): void {
@@ -25,5 +32,10 @@ export class AdminNavbarComponent implements OnInit {
       // clickedElement.className = clickedElement.append(' active');
       clickedElement.className += ' active';
     }
+  }
+  logout(): void {
+    this.tokenService.logout();
+    window.location.reload();
+    this.router.navigate(['/home']);
   }
 }
