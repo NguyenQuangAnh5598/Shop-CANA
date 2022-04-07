@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   count: any;
   @Output() searchByname = new EventEmitter();
   searchText = '';
+  $e: any;
 
   constructor(private categoryService: CategoryService,
               private tokenService: TokenService,
@@ -38,13 +39,21 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  // onButtonClick($e): void {
-  //   let clickedElement = $e.target;
-  //   if(clickedElement.nodeName === "a") {
-  //     let le
-  //   }
-  // }
-}
+  onButtonClick($e): void {
+    console.log($e);
+    const clickedElement = $e.target ;
+    console.log(clickedElement);
+    console.log($e.target.value);
+    if (clickedElement.nodeName === 'A') {
+      const isActivated = clickedElement.parentElement.querySelector('.active');
+      if (isActivated) {
+        isActivated.classList.remove('active');
+      }
 
+      // clickedElement.className = clickedElement.append(' active');
+      clickedElement.className += ' active';
+    }
+  }
+}
 
 

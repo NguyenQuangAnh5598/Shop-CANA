@@ -18,9 +18,8 @@
         </div>
       </div>
       <div class="col-md-2">
-        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Lưu"/>
+        <input (click)="update()" type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
       </div>
-
     </div>
 
     <div class="row">
@@ -95,11 +94,10 @@
                 <label style="margin-top: 15px;">Ảnh đại diện</label>
               </div>
               <div class="col-md-6">
-                <app-upload-file (giveUrl)="uploadFile($event)"  ></app-upload-file>
+                <app-upload-file (giveUrl)="uploadFile($event)"></app-upload-file>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

@@ -16,9 +16,14 @@ export class AdminProfileCustomerComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
-
+  findUserById(): void{
+      this.id = this.activatedRoute.snapshot.params.id;
+      this.userService.getUserById(this.id).subscribe(data => {
+        this.user = data;
+      });
+  }
   ngOnInit(): void {
-  this.findUserById();
+    this.findUserById();
   }
 
   update(): void {
@@ -29,11 +34,5 @@ export class AdminProfileCustomerComponent implements OnInit {
 
   uploadFile(event): void {
     this.user.avatar = event;
-  }
-  findUserById(): void{
-    this.id = this.activatedRoute.snapshot.params.id;
-    this.userService.getUserById(this.id).subscribe(data => {
-      this.user = data;
-    });
   }
 }

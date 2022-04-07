@@ -48,7 +48,11 @@ import { AdminHomeComponent } from './component/admin/admin-home/admin-home.comp
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AdminOrderDetailListComponent } from './component/admin/admin-order-detail-list/admin-order-detail-list.component';
 import { Error403Component } from './component/error403/error403.component';
+
 import { SearchCustomerNameComponent } from './component/admin/search-customer-name/search-customer-name.component';
+
+import { EmailForgotPasswordComponent } from './component/email-forgot-password/email-forgot-password.component';
+
 
 @NgModule({
   declarations: [
@@ -81,8 +85,8 @@ import { SearchCustomerNameComponent } from './component/admin/search-customer-n
     AdminHomeComponent,
     AdminOrderDetailListComponent,
     Error403Component,
-    SearchCustomerNameComponent
-
+    SearchCustomerNameComponent,
+    EmailForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
