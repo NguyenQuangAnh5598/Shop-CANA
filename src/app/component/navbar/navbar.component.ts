@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CategoryService} from '../../service/category.service';
 import {TokenService} from '../../service/token.service';
-import { Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {OrderDetail} from '../../model/OrderDetail';
 
 @Component({
@@ -11,8 +11,9 @@ import {OrderDetail} from '../../model/OrderDetail';
 })
 export class NavbarComponent implements OnInit {
   token: any;
+  i = 0;
   @Input()
-count: any;
+  count: any;
   @Output() searchByname = new EventEmitter();
   searchText = '';
 
@@ -24,6 +25,7 @@ count: any;
   }
 
   ngOnInit(): void {
+    // console.log(this.btns);
   }
 
   searchProductByname(): void {
@@ -36,4 +38,13 @@ count: any;
     this.router.navigate(['/home']);
   }
 
+  // onButtonClick($e): void {
+  //   let clickedElement = $e.target;
+  //   if(clickedElement.nodeName === "a") {
+  //     let le
+  //   }
+  // }
 }
+
+
+

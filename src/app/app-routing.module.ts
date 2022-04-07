@@ -21,6 +21,7 @@ import {AdminCreateProductComponent} from './component/admin/admin-create-produc
 import {AdminRevenueComponent} from './component/admin/admin-revenue/admin-revenue.component';
 import {AdminCheckCompletedOrderComponent} from './component/admin/admin-check-completed-order/admin-check-completed-order.component';
 import {AdminEditProductComponent} from './component/admin/admin-edit-product/admin-edit-product.component';
+import {AdminOrderDetailListComponent} from './component/admin/admin-order-detail-list/admin-order-detail-list.component';
 import {AdminGuard} from './security/admin.guard';
 import {Error403Component} from './component/error403/error403.component';
 
@@ -52,7 +53,8 @@ const routes: Routes = [{
       {path: 'admin-create-product', canActivate: [AdminGuard], component: AdminCreateProductComponent},
       {path: 'admin-edit-product/:id', canActivate: [AdminGuard], component: AdminEditProductComponent},
       {path: 'admin-revenue', canActivate: [AdminGuard], component: AdminRevenueComponent},
-      {path: 'admin-profile-customer/:id', canActivate: [AdminGuard], component: AdminProfileCustomerComponent}
+      {path: 'admin-profile-customer/:id', canActivate: [AdminGuard], component: AdminProfileCustomerComponent},
+      {path: 'admin-order-detail-list/:id', canActivate: [AdminGuard], component: AdminOrderDetailListComponent}
     ]
   },
 
