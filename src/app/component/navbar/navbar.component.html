@@ -42,7 +42,7 @@
         <div class="input-group">
           <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search for products"
                  [ngModelOptions]="{standalone: true}">
-          <button (click)="searchProductByname()">
+          <button style="border-radius: 2px; border: 1px solid;" (click)="searchProductByname()">
             <div class="input-group-append">
               <span class="input-group-text bg-transparent text-primary">
 
@@ -119,22 +119,21 @@
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
           <a class="text-decoration-none d-block d-lg-none">
             <h1 class="m-0 display-5 font-weight-semi-bold"><span
-              class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+              class="text-primary font-weight-bold border px-3 mr-1">C</span>ANA</h1>
           </a>
           <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-            <div class="navbar-nav mr-auto py-0">
 
 
-              <a routerLink="/home" class="nav-item nav-link active">Home</a>
-
-
-              <a routerLink="/home/customer-shop" class="nav-item nav-link">Shop</a>
-              <a routerLink="/home/customer-list-order" class="nav-item nav-link">Orders</a>
-              <div class="nav-item dropdown">
-                <a  class="nav-link dropdown-toggle" data-toggle="dropdown">Information</a>
+            <div id="topheader" class="navbar-nav mr-auto py-0">
+<!--              <a routerLink="/home" class="nav-item nav-item-first nav-link active">Home</a>-->
+              <a routerLink="/home" class="nav-item nav-item-btn nav-item-first nav-link btn-item active">Home</a>
+              <a routerLink="/home/customer-shop" class="nav-item nav-item-btn nav-link btn-item ">Shop</a>
+              <a routerLink="/home/customer-list-order" class="nav-item nav-item-btn nav-link btn-item ">Orders</a>
+              <div class="nav-item nav-item-btn dropdown">
+                <a class="nav-link dropdown-toggle btn-item" data-toggle="dropdown">Information</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a routerLink="/home/customer-profile" class="dropdown-item">Profile</a>
                   <a routerLink="/home/customer-change-password" class="dropdown-item">Change Password</a>
@@ -142,10 +141,16 @@
               </div>
               <!--            <a href="contact.html" class="nav-item nav-link">Contact</a>-->
             </div>
+
+
+
+
+
+
             <div class="navbar-nav ml-auto py-0">
-              <a (click)="logout()" *ngIf="token != null" class="nav-item nav-link">Logout</a>
-              <a routerLink="/login" *ngIf="token== null" class="nav-item nav-link">Login</a>
-              <a routerLink="/signup" *ngIf="token== null" class="nav-item nav-link">Register</a>
+              <a (click)="logout()" *ngIf="token != null" class="nav-item nav-item-btn nav-item-last nav-link">Logout</a>
+              <a routerLink="/login" *ngIf="token== null" class="nav-item nav-item-btn nav-link">Login</a>
+              <a routerLink="/signup" *ngIf="token== null" class="nav-item nav-item-btn nav-item-last nav-link">Register</a>
             </div>
           </div>
         </nav>
