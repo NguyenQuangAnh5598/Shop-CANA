@@ -47,6 +47,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AdminOrderDetailListComponent } from './component/admin/admin-order-detail-list/admin-order-detail-list.component';
+import { Error403Component } from './component/error403/error403.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,9 @@ import { AdminOrderDetailListComponent } from './component/admin/admin-order-det
     AdminEditProductComponent,
     AdminRevenueComponent,
     AdminHomeComponent,
-    AdminOrderDetailListComponent
+    AdminOrderDetailListComponent,
+    Error403Component
+
   ],
   imports: [
     BrowserModule,
