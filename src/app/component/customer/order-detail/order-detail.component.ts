@@ -37,5 +37,4 @@ export class OrderDetailComponent implements OnInit {
       this.orderDetailList = data;
     });
   }
-
 }

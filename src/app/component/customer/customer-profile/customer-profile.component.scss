@@ -45,6 +45,7 @@ body{
   font-weight: 600;
   color: #6c757d;
   cursor: pointer;
+  transition: 0.3s;
 }
 .proile-rating{
   font-size: 12px;
@@ -94,3 +95,14 @@ body{
   color: #0062cc;
 }
 
+.profile-edit-btn:hover{
+  background-color: #3e8e41;
+  color: white;
+}
+.linkhover{
+  transition: 0.3s;
+}
+.linkhover:hover{
+  background-color:#E6E6FA;
+  color: white;
+}

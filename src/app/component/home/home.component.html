@@ -1,4 +1,4 @@
-<app-navbar  (searchByname)="searchName($event)" ></app-navbar>
-<router-outlet (activate)="Onactivate($event)"></router-outlet>
+<app-navbar [count]="count" (searchByname)="searchName($event)"></app-navbar>
+<router-outlet  (activate)="Onactivate($event)"></router-outlet>
 <app-footer></app-footer>
 

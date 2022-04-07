@@ -5,6 +5,8 @@ import {OrderDetailService} from '../../../service/order-detail.service';
 import {TokenService} from '../../../service/token.service';
 import {Router} from '@angular/router';
 import {OrderDetail} from '../../../model/OrderDetail';
+import {EmitService} from '../../../service/emit.service';
+import {CountChangeDTO} from '../../../model/CountChangeDTO';
 
 @Component({
   selector: 'app-customer-home-page',
@@ -16,10 +18,15 @@ export class CustomerHomePageComponent implements OnInit {
   orderDetail: OrderDetail = {};
   orderQuantity = 1;
   productId = 0;
+  private error = {
+    message: '403'
+  };
+
   constructor(private orderDetailService: OrderDetailService,
               private tokenService: TokenService,
               private router: Router,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private emitService: EmitService) {
   }
 
   ngOnInit(): void {
@@ -44,8 +51,17 @@ export class CustomerHomePageComponent implements OnInit {
         productId: this.productId,
       };
       console.log(this.orderDetail);
-      this.orderDetailService.createNewOrderDetail(this.orderDetail).subscribe();
-      alert('Thêm vào rỏ hàng thành công');
+      this.orderDetailService.createNewOrderDetail(this.orderDetail).subscribe(data => {
+        console.log(data);
+        if (JSON.stringify(data) === JSON.stringify(this.error)) {
+          this.router.navigate(['/error']);
+        } else {
+          const countChange = new CountChangeDTO();
+          countChange.id = data.id;
+          this.emitService.emitChange(countChange);
+          alert('Thêm vào rỏ hàng thành công');
+        }
+      });
     } else {
       alert('Xin hãy đăng nhập');
       this.router.navigate(['/login']);

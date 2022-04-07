@@ -22,6 +22,13 @@ import {AdminRevenueComponent} from './component/admin/admin-revenue/admin-reven
 import {AdminCheckCompletedOrderComponent} from './component/admin/admin-check-completed-order/admin-check-completed-order.component';
 import {AdminEditProductComponent} from './component/admin/admin-edit-product/admin-edit-product.component';
 
+import {AdminOrderDetailListComponent} from './component/admin/admin-order-detail-list/admin-order-detail-list.component';
+import {AdminGuard} from './security/admin.guard';
+import {Error403Component} from './component/error403/error403.component';
+
+import {EmailForgotPasswordComponent} from './component/email-forgot-password/email-forgot-password.component';
+
+
 const routes: Routes = [{
   path: '',
   redirectTo: 'home',
@@ -37,26 +44,30 @@ const routes: Routes = [{
       {path: 'customer-profile', canActivate: [AuthGuard], component: CustomerProfileComponent},
       {path: 'customer-change-password', canActivate: [AuthGuard], component: CustomerChangePasswordComponent},
       {path: 'customer-list-order', canActivate: [AuthGuard], component: CustomerListOrderComponent},
-      {path: 'order-detail/:id', component: OrderDetailComponent}
+      {path: 'order-detail/:id', canActivate: [AuthGuard], component: OrderDetailComponent}
     ]
   },
-  {path: 'admin-home', component: AdminHomeComponent,
-  children: [
-    {path: '', component: AdminListCustomerComponent},
-    {path: 'admin-list-product', component: AdminListProductComponent},
-    {path: 'admin-check-order', component: AdminCheckOrderComponent},
-    {path: 'admin-check-completed-order', component: AdminCheckCompletedOrderComponent},
-    {path: 'admin-create-product', component: AdminCreateProductComponent},
-    {path: 'admin-revenue', component : AdminRevenueComponent}
-  ]
+  {
+    path: 'admin-home', canActivate: [AdminGuard], component: AdminHomeComponent,
+    children: [
+      {path: '', canActivate: [AdminGuard], component: AdminListCustomerComponent},
+      {path: 'admin-list-product', canActivate: [AdminGuard], component: AdminListProductComponent},
+      {path: 'admin-check-order', canActivate: [AdminGuard], component: AdminCheckOrderComponent},
+      {path: 'admin-check-completed-order', canActivate: [AdminGuard], component: AdminCheckCompletedOrderComponent},
+      {path: 'admin-create-product', canActivate: [AdminGuard], component: AdminCreateProductComponent},
+      {path: 'admin-edit-product/:id', canActivate: [AdminGuard], component: AdminEditProductComponent},
+      {path: 'admin-revenue', canActivate: [AdminGuard], component: AdminRevenueComponent},
+      {path: 'admin-profile-customer/:id', canActivate: [AdminGuard], component: AdminProfileCustomerComponent},
+      {path: 'admin-order-detail-list/:id', canActivate: [AdminGuard], component: AdminOrderDetailListComponent},
+      {path: 'search-name-customer/:name', canActivate: [AdminGuard], component: AdminListCustomerComponent}
+    ]
   },
 
 
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'admin-profile-customer/:id', component: AdminProfileCustomerComponent},
-  {path: 'admin-create-product', component: AdminCreateProductComponent},
-  {path: 'admin-edit-product/:id', component: AdminEditProductComponent}
+  {path: 'error', component: Error403Component},
+  {path: 'forgot', component: EmailForgotPasswordComponent}
 ];
 
 

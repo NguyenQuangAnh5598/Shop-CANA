@@ -1,8 +1,5 @@
 <body>
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-  your browser</a> to improve your experience.</p>
-<![endif]-->
+
 
 <div class="auth-wrapper">
   <div class="container-fluid h-100">
@@ -14,61 +11,110 @@
       </div>
       <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
         <div class="authentication-form mx-auto">
-          <div class="logo-centered">
-            <a href="../index.html"><img src="assets/signup-login/src/img/brand.svg" alt=""></a>
+          <div class="logo-centered" style="width: 120px">
+            <h2>Đăng ký </h2>
           </div>
-          <h3>CANA Shop</h3>
-          <p>Join us today! It takes only few steps</p>
-
 
           <!--      Form    -->
-          <form #f="ngForm" (ngSubmit)="f.form.valid && ngSubmit()" novalidate>
-            <mat-error  style="margin-top: 10px">{{status}}</mat-error>
+          <form #f="ngForm" (ngSubmit)="f.form.valid && ngSubmit()" novalidate class="example-form">
+            <mat-error style="margin-top: 10px">{{status}}</mat-error>
+            <!--            test-->
 
-            <!-- Name -->
+            <!--            end test-->
+            <!--test name-->
 
-            <div class="form-group">
+            <!--            <div class="form-group">-->
+            <!--              <input name="name"-->
+            <!--                     [(ngModel)]="form.name"-->
+            <!--                     matInput-->
+            <!--                     placeholder="Your Name"-->
+            <!--                     required-->
+            <!--                     minlength="6"-->
+            <!--                     #name="ngModel" type="text" class="form-control">-->
+            <!--              <mat-error *ngIf="name.hasError('required')">The nam is required!</mat-error>-->
+            <!--              <mat-error *ngIf="name.hasError('minlength')">Ten toi thieu 6 ky tu!</mat-error>-->
+            <!--              <i class="ik ik-user"></i>-->
+            <!--            </div>-->
+
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Name</mat-label>
               <input name="name"
                      [(ngModel)]="form.name"
                      matInput
                      placeholder="Your Name"
                      required
                      minlength="6"
-                     #name="ngModel" type="text" class="form-control">
-              <mat-error *ngIf="name.hasError('required')">The nam is required!</mat-error>
-              <mat-error *ngIf="name.hasError('minlength')">Ten toi thieu 6 ky tu!</mat-error>
-              <i class="ik ik-user"></i>
-            </div>
-
-            <!--          Username-->
-            <div class="form-group">
+                     #name="ngModel" type="text">
+              <mat-error style="margin-bottom: 10px;" *ngIf="name.hasError('required')">Họ tên không được để trống!
+              </mat-error>
+              <mat-error style="margin-bottom: 10px;" *ngIf="name.hasError('minlength')">Họ tên tối thiểu phải có 6 ký
+                tự!
+              </mat-error>
+            </mat-form-field>
+            <!--end test name-->
+            <!--   test username-->
+            <!--            <div class="form-group">-->
+            <!--              <input name="username"-->
+            <!--                     [(ngModel)]="form.userName"-->
+            <!--                     matInput-->
+            <!--                     placeholder="Your UserName"-->
+            <!--                     required-->
+            <!--                     minlength="3"-->
+            <!--                     #username="ngModel" type="text" class="form-control">-->
+            <!--              <mat-error *ngIf="username.hasError('required')">The username is required!</mat-error>-->
+            <!--              <mat-error *ngIf="username.hasError('minlength')">Username toi thieu 3 ky tu!</mat-error>-->
+            <!--              <i class="ik ik-user"></i>-->
+            <!--            </div>-->
+            <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
+              <mat-label>Username</mat-label>
               <input name="username"
                      [(ngModel)]="form.userName"
                      matInput
                      placeholder="Your UserName"
                      required
                      minlength="3"
-                     #username="ngModel" type="text" class="form-control">
-              <mat-error *ngIf="username.hasError('required')">The username is required!</mat-error>
-              <mat-error *ngIf="username.hasError('minlength')">Username toi thieu 3 ky tu!</mat-error>
-              <i class="ik ik-user"></i>
-            </div>
-
+                     #username="ngModel" type="text">
+              <mat-error *ngIf="username.hasError('required')">Username không được để trống!</mat-error>
+              <mat-error *ngIf="username.hasError('minlength')">Username tối thiểu 3 ký tự!</mat-error>
+            </mat-form-field>
+            <!--end test uername-->
             <!--email-->
-            <div class="form-group">
-              <input name="email"
-                     matInput
-                     required
-                     email
+            <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
                      [(ngModel)]="form.email"
-                     placeholder="Your Email"
-                     #email="ngModel" type="text" class="form-control">
-              <mat-error *ngIf="email.hasError('required')">The email is required!</mat-error>
-              <mat-error *ngIf="email.hasError('email')">The email invalid! Ex: anh@gmail.com</mat-error>
-              <i class="ik ik-user"></i>
-            </div>
-            <!--            password-->
-            <div class="form-group">
+                     placeholder="Ex. abc@gmail.com">
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email không được để trống
+              </mat-error>
+            </mat-form-field>
+            <!--            end email-->
+            <!-- password-->
+            <!--            <div class="form-group">-->
+            <!--              <input-->
+            <!--                [type]="hide ? 'password' : 'text'"-->
+            <!--                name="password"-->
+            <!--                [(ngModel)]="form.password"-->
+            <!--                matInput-->
+            <!--                placeholder="Password"-->
+            <!--                required-->
+            <!--                minlength="6"-->
+            <!--                #password="ngModel" class="form-control">-->
+            <!--              <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>-->
+            <!--              <mat-error *ngIf="password.hasError('minlength')">Vui long nhap toi thieu 6 ky tu!</mat-error>-->
+            <!--              <button color="accent" mat-icon-button matSuffix (click)="hide = !hide"-->
+            <!--                      [attr.aria-label]="'Hide password'"-->
+            <!--                      [attr.aria-pressed]="hide">-->
+            <!--                <mat-icon style="width: 150px">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+            <!--              </button>-->
+
+            <!--              <i class="ik ik-lock"></i>-->
+            <!--            </div>-->
+            <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
+              <mat-label>Enter your password</mat-label>
               <input
                 [type]="hide ? 'password' : 'text'"
                 name="password"
@@ -77,20 +123,33 @@
                 placeholder="Password"
                 required
                 minlength="6"
-                #password="ngModel" class="form-control">
-              <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>
+                #password="ngModel">
+              <mat-error *ngIf="password.hasError('required')">Mật khẩu không được để trống</mat-error>
               <mat-error *ngIf="password.hasError('minlength')">Vui long nhap toi thieu 6 ky tu!</mat-error>
-              <button color="accent" mat-icon-button matSuffix (click)="hide = !hide"
-                      [attr.aria-label]="'Hide password'"
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                       [attr.aria-pressed]="hide">
-                <mat-icon style="width: 150px">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
 
-              <i class="ik ik-lock"></i>
-            </div>
+            </mat-form-field>
+            <!--end password-->
+            <!--test phone-->
+            <!--            <div class="form-group">-->
+            <!--              <input-->
+            <!--                name="phone"-->
+            <!--                [(ngModel)]="form.phoneNumber"-->
+            <!--                matInput-->
+            <!--                placeholder="Phone Number"-->
+            <!--                required-->
+            <!--                type="text" pattern="[0-9]{9,10}"-->
+            <!--                #phone="ngModel" class="form-control">-->
+            <!--              <mat-error *ngIf="phone.hasError('required')">The phone number is required!</mat-error>-->
+            <!--              <mat-error *ngIf="phone.hasError('pattern')">Vui long nhạp ky tu so, toi thieu 9, toi da 10 ky tu</mat-error>-->
+            <!--              <i class="ik ik-eye-off"></i>-->
+            <!--            </div>-->
 
-            <!--phone-->
-            <div class="form-group">
+            <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
+              <mat-label>Phone</mat-label>
               <input
                 name="phone"
                 [(ngModel)]="form.phoneNumber"
@@ -98,14 +157,30 @@
                 placeholder="Phone Number"
                 required
                 type="text" pattern="[0-9]{9,10}"
-                #phone="ngModel" class="form-control">
-              <mat-error *ngIf="phone.hasError('required')">The phone number is required!</mat-error>
-              <mat-error *ngIf="phone.hasError('pattern')">Vui long nhạp ky tu so, toi thieu 9, toi da 10 ky tu</mat-error>
-              <i class="ik ik-eye-off"></i>
-            </div>
+                #phone="ngModel">
+              <mat-error *ngIf="phone.hasError('required')">Số điện thoại không được để trống!</mat-error>
+              <mat-error *ngIf="phone.hasError('pattern')">Vui long nhạp ky tu so, toi thieu 9, toi da 10 ky tu
+              </mat-error>
+            </mat-form-field>
+            <!--end test phone-->
+            <!--test address-->
+            <!--            <div class="form-group">-->
+            <!--              <input-->
+            <!--                name="address"-->
+            <!--                [(ngModel)]="form.address"-->
+            <!--                matInput-->
+            <!--                placeholder="Your address"-->
+            <!--                required-->
+            <!--                minlength="6"-->
+            <!--                type="text"-->
+            <!--                #address="ngModel" class="form-control">-->
+            <!--              <mat-error *ngIf="address.hasError('required')">The address is required!</mat-error>-->
+            <!--              <mat-error *ngIf="address.hasError('minlength')">Vui long nhap toi thieu 6 ky tu!</mat-error>-->
+            <!--              <i class="ik ik-eye-off"></i>-->
+            <!--            </div>-->
 
-            <!--address-->
-            <div class="form-group">
+            <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
+              <mat-label>Address</mat-label>
               <input
                 name="address"
                 [(ngModel)]="form.address"
@@ -114,28 +189,20 @@
                 required
                 minlength="6"
                 type="text"
-                #address="ngModel" class="form-control">
-              <mat-error *ngIf="address.hasError('required')">The address is required!</mat-error>
+                #address="ngModel">
+              <mat-error *ngIf="address.hasError('required')">Địa chỉ không được để trống!</mat-error>
               <mat-error *ngIf="address.hasError('minlength')">Vui long nhap toi thieu 6 ky tu!</mat-error>
-              <i class="ik ik-eye-off"></i>
-            </div>
+            </mat-form-field>
+            <!--end test address-->
 
-
-            <div class="row">
-              <div class="col-12 text-left">
-                <label class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox"
-                         value="option1">
-                  <span class="custom-control-label">&nbsp;I Accept <a href="#">Terms and Conditions</a></span>
-                </label>
-              </div>
-            </div>
             <div class="sign-btn text-center">
-              <button class="btn btn-theme" type="submit" style="color: whitesmoke">Create Account</button>
+              <button class="btn btn-theme" type="submit"
+                      style=" height: 45px;border-radius: 5px; color: #0b2e13">Tạo tài khoản
+              </button>
             </div>
           </form>
           <div class="register">
-            <p>Already have an account? <a href="login.html">Sign In</a></p>
+            <p>Bạn đã có tài khoản <a routerLink="/login">Đăng nhập ngay</a></p>
           </div>
         </div>
       </div>
