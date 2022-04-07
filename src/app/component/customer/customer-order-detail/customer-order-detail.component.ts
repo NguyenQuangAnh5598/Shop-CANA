@@ -15,8 +15,15 @@ import {CountChangeDTO} from '../../../model/CountChangeDTO';
 })
 export class CustomerOrderDetailComponent implements OnInit {
   product: Product = {};
+  id: any;
+  index: any;
+  @Output()
+  orderDelete = new EventEmitter();
   @Input()
   orderDetailList: OrderDetail[] = [];
+  @Output()
+  orderDetailListChange = new EventEmitter<any>();
+
 
   constructor(private orderDetailService: OrderDetailService,
               private orderService: OrderService,
@@ -35,8 +42,9 @@ export class CustomerOrderDetailComponent implements OnInit {
       alert('Số lượng sản phẩm không đủ!!');
       orderDetail.orderQuantity = this.product.quantity;
     } else {
-      this.orderDetailService.updateOrderDetail(orderDetail).subscribe();
-      alert('Thay đổi số lượng thành công!');
+      this.orderDetailService.updateOrderDetail(orderDetail).subscribe(data => {
+        this.orderDetailListChange.emit(data);
+      });
     }
   }
 
@@ -49,7 +57,11 @@ export class CustomerOrderDetailComponent implements OnInit {
         orderDetail.orderQuantity = 1;
       }
     } else {
-      this.orderDetailService.updateOrderDetail(orderDetail).subscribe();
+      this.orderDetailService.updateOrderDetail(orderDetail).subscribe(
+        data => {
+          this.orderDetailListChange.emit(data);
+        }
+      );
     }
   }
 
@@ -62,7 +74,9 @@ export class CustomerOrderDetailComponent implements OnInit {
       alert('Số lượng sản phẩm không đủ!!');
       orderDetail.orderQuantity = this.product.quantity;
     } else {
-      this.orderDetailService.updateOrderDetail(orderDetail).subscribe();
+      this.orderDetailService.updateOrderDetail(orderDetail).subscribe(data => {
+        this.orderDetailListChange.emit(data);
+      });
     }
   }
 
@@ -72,7 +86,26 @@ export class CustomerOrderDetailComponent implements OnInit {
       countChange.id = 1;
       countChange.status = 'minus';
       this.emitService.emitChange(countChange);
+      this.orderDelete.emit(index);
     });
+    console.log(index);
     this.orderDetailList.splice(index, 1);
+  }
+
+  setData(id: number, i: number): void {
+    this.id = id;
+    this.index = i;
+  }
+
+  deleteOrder(): void {
+    this.orderDetailService.deleteOrderDetail(this.id).subscribe(() => {
+      const countChange = new CountChangeDTO();
+      countChange.id = 1;
+      countChange.status = 'minus';
+      this.emitService.emitChange(countChange);
+      this.orderDelete.emit();
+    });
+    console.log(this.index);
+    this.orderDetailList.splice(this.index, 1);
   }
 }
