@@ -36,7 +36,7 @@ export class AdminListCustomerComponent implements OnInit {
   }
 
   updateUser(id: number): void {
-    this.router.navigate(['/admin-profile-customer', id]);
+    this.router.navigate(['/admin-home/admin-profile-customer', id]);
   }
   // tslint:disable-next-line:typedef
   deleteCustomer(id: number) {
