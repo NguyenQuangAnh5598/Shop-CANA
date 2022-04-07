@@ -24,6 +24,7 @@ import {AdminEditProductComponent} from './component/admin/admin-edit-product/ad
 import {AdminOrderDetailListComponent} from './component/admin/admin-order-detail-list/admin-order-detail-list.component';
 import {AdminGuard} from './security/admin.guard';
 import {Error403Component} from './component/error403/error403.component';
+import {EmailForgotPasswordComponent} from './component/email-forgot-password/email-forgot-password.component';
 
 const routes: Routes = [{
   path: '',
@@ -61,7 +62,8 @@ const routes: Routes = [{
 
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'error', component: Error403Component}
+  {path: 'error', component: Error403Component},
+  {path: 'forgot', component: EmailForgotPasswordComponent}
 ];
 
 
