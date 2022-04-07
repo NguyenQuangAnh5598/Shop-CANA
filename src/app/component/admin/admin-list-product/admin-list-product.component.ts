@@ -3,6 +3,8 @@ import {Product} from '../../../model/Product';
 import {ProductService} from '../../../service/product.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {Category} from '../../../model/Category';
+import {CategoryService} from '../../../service/category.service';
 
 @Component({
   selector: 'app-admin-list-product',
@@ -10,17 +12,24 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./admin-list-product.component.scss']
 })
 export class AdminListProductComponent implements OnInit {
+  searchText = '';
+  minPrice = '';
+  maxPrice = '';
+  categoryId = '';
   displayedColumns: string[] = ['name', 'image', 'price', 'quantity', 'manufacturer', 'description', 'category', 'action'];
   dataSource: any;
   productList: Product[] = [];
-
+  categoryList: Category[] = [];
+  selectedValue ?: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+              private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {
     this.findProductList();
+    this.showCategory();
   }
 
   findProductList(): void {
@@ -35,8 +44,29 @@ export class AdminListProductComponent implements OnInit {
   // tslint:disable-next-line:typedef
   deleteProduct(id: number) {
     this.productService.deleteProduct(id).subscribe(() => {
-      this.findProductList();
+        this.findProductList();
       }
     );
+  }
+
+  searchProduct(): void {
+    if (this.selectedValue > '0') {
+      this.categoryId = this.selectedValue;
+    } else {
+      this.categoryId = '';
+    }
+    console.log(this.searchText, this.minPrice, this.maxPrice, this.categoryId);
+    this.productService.findByName(this.searchText, this.categoryId, this.minPrice, this.maxPrice).subscribe(productList => {
+      this.productList = productList;
+      this.dataSource = new MatTableDataSource<Product>(this.productList);
+      console.log(this.dataSource);
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+
+  showCategory(): void {
+    this.categoryService.findAll().subscribe(categoryList => {
+      this.categoryList = categoryList;
+    });
   }
 }
