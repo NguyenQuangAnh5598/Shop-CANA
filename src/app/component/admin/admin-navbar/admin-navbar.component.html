@@ -25,78 +25,31 @@
       <li class="nav-item">
         <a class="nav-link navbar_link" aria-current="page" routerLink="/admin-home/admin-revenue">Revenue</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link navbar_link" aria-current="page" href="#about">About us</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link navbar_link" aria-current="page" href="#contact">Contact</a>
-      </li>
     </ul>
-    <ul class="navbar-nav flex-row" style="font-size: 25px;">
-      <li class="nav-item">
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item" style="margin-top: 27px;">
+        <h5 *ngIf="token != null">Well come {{name}}</h5>
+      </li>
+      <li class="nav-item" style="margin-top: 10px;cursor: pointer;font-weight: 450;">
+        <a (click)="logout()" *ngIf="token != null" class="nav-item nav-link navbar_link">Logout</a>
+      </li>
+      <li class="nav-item" style="font-size: 25px;">
         <a class="nav-link px-2 navbar_link" href="#!">
           <i class="fab fa-facebook-square"></i>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" style="font-size: 25px;">
         <a class="nav-link px-2 navbar_link" href="#!">
           <i class="fab fa-instagram"></i>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" style="font-size: 25px;">
         <a class="nav-link ps-2 navbar_link" href="#!">
           <i class="fab fa-youtube"></i>
         </a>
       </li>
     </ul>
   </div>
-
-<!--    <div class="collapse navbar-collapse" id="navbarExample01">-->
-<!--      <ul class="navbar-nav ms-auto mb-2 mb-lg-0"(click)="onButtonClick($event)">-->
-<!--        <li class="nav-item active">-->
-<!--          <a class="nav-link" aria-current="page" routerLink="/admin-home">Home</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" aria-current="page" routerLink="/admin-home/admin-list-product">ProductList</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" aria-current="page" routerLink="/admin-home/admin-create-product">Create Product</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" aria-current="page" routerLink="/admin-home/admin-check-order">Xác nhận</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" aria-current="page" routerLink="/admin-home/admin-check-completed-order">Xác nhận hoàn thành</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" aria-current="page" routerLink="/admin-home/admin-revenue">Revenue</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" aria-current="page" href="#about">About us</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" aria-current="page" href="#contact">Contact</a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--      <ul class="navbar-nav flex-row">-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link px-2" href="#!">-->
-<!--            <i class="fab fa-facebook-square"></i>-->
-<!--          </a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link px-2" href="#!">-->
-<!--            <i class="fab fa-instagram"></i>-->
-<!--          </a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link ps-2" href="#!">-->
-<!--            <i class="fab fa-youtube"></i>-->
-<!--          </a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--    </div>-->
-
   </div>
 </nav>
 
