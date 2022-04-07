@@ -48,6 +48,7 @@ import { AdminHomeComponent } from './component/admin/admin-home/admin-home.comp
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AdminOrderDetailListComponent } from './component/admin/admin-order-detail-list/admin-order-detail-list.component';
 import { Error403Component } from './component/error403/error403.component';
+import { EmailForgotPasswordComponent } from './component/email-forgot-password/email-forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { Error403Component } from './component/error403/error403.component';
     AdminRevenueComponent,
     AdminHomeComponent,
     AdminOrderDetailListComponent,
-    Error403Component
+    Error403Component,
+    EmailForgotPasswordComponent
 
   ],
   imports: [

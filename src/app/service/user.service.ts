@@ -37,7 +37,11 @@ export class UserService {
   }
 
   // tslint:disable-next-line:typedef
-  deleteCustomer(id: number){
+  deleteCustomer(id: number) {
     return this.http.delete(API_LOCAL + 'user/' + id);
+  }
+
+  getForgotPassword(email: string): Observable<any> {
+    return this.http.post(API_LOCAL + 'email', email);
   }
 }
