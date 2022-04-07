@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngSubmit(): void {
     this.loginForm = new LoginForm(
-      this.form.userName,
+      this.form.name,
       this.form.password
     );
     console.log(this.loginForm);
