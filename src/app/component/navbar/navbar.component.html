@@ -148,9 +148,12 @@
 
 
             <div class="navbar-nav ml-auto py-0">
-              <a (click)="logout()" *ngIf="token != null" class="nav-item nav-item-btn nav-item-last nav-link">Logout</a>
-              <a routerLink="/login" *ngIf="token== null" class="nav-item nav-item-btn nav-link">Login</a>
-              <a routerLink="/signup" *ngIf="token== null" class="nav-item nav-item-btn nav-item-last nav-link">Register</a>
+
+              <h5 *ngIf="token != null" style="margin-top: 20px;">Well come {{name}}</h5>
+              <a (click)="logout()" *ngIf="token != null" class="nav-item nav-link">Logout</a>
+              <a routerLink="/login" *ngIf="token== null" class="nav-item nav-link">Login</a>
+              <a routerLink="/signup" *ngIf="token== null" class="nav-item nav-link">Register</a>
+
             </div>
           </div>
         </nav>

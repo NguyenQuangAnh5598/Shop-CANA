@@ -46,12 +46,16 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+
+import {MatSelectModule} from '@angular/material/select';
+
 import { AdminOrderDetailListComponent } from './component/admin/admin-order-detail-list/admin-order-detail-list.component';
 import { Error403Component } from './component/error403/error403.component';
 
 import { SearchCustomerNameComponent } from './component/admin/search-customer-name/search-customer-name.component';
 
 import { EmailForgotPasswordComponent } from './component/email-forgot-password/email-forgot-password.component';
+
 
 
 @NgModule({
@@ -88,27 +92,28 @@ import { EmailForgotPasswordComponent } from './component/email-forgot-password/
     SearchCustomerNameComponent,
     EmailForgotPasswordComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    AngularFireStorageModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    NgxPaginationModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        AngularFireStorageModule,
+        HttpClientModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        FormsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        MatSelectModule
 
-  ],
+    ],
   providers: [httpInterceptorProvider],
   bootstrap: [AppComponent]
 })

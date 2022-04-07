@@ -16,13 +16,21 @@ export class NavbarComponent implements OnInit {
   count: any;
   @Output() searchByname = new EventEmitter();
   searchText = '';
+
+  name = '';
+
   $e: any;
+
 
   constructor(private categoryService: CategoryService,
               private tokenService: TokenService,
               private router: Router) {
     this.token = this.tokenService.getToken();
+
+    this.name = this.tokenService.getName();
+
     console.log(this.tokenService.getRole());
+
   }
 
   ngOnInit(): void {
