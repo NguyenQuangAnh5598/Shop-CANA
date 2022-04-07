@@ -15,17 +15,15 @@ export class AdminProfileCustomerComponent implements OnInit {
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.id = params.get('id');
-      this.userService.getUserById(this.id).subscribe(user => {
-        this.user = user;
-      });
-    });
-
   }
-
+  findUserById(): void{
+      this.id = this.activatedRoute.snapshot.params.id;
+      this.userService.getUserById(this.id).subscribe(data => {
+        this.user = data;
+      });
+  }
   ngOnInit(): void {
-
+    this.findUserById();
   }
 
   update(): void {
