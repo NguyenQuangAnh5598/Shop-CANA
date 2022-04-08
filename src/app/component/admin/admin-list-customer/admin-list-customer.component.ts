@@ -12,7 +12,7 @@ import {Product} from '../../../model/Product';
   styleUrls: ['./admin-list-customer.component.scss']
 })
 export class AdminListCustomerComponent implements OnInit {
-
+  customerId: any;
   displayedColumns: string[] = ['username', 'avatar', 'name', 'dob', 'email', 'phone', 'address', 'action'];
   dataSource: any;
   userList: User[] = [];
@@ -26,7 +26,7 @@ export class AdminListCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe(() => {
-        this.showListUser();
+      this.showListUser();
     });
   }
 
@@ -42,18 +42,20 @@ export class AdminListCustomerComponent implements OnInit {
   updateUser(id: number): void {
     this.router.navigate(['/admin-home/admin-profile-customer', id]);
   }
+
   // tslint:disable-next-line:typedef
-  deleteCustomer(id: number) {
-    this.userService.deleteCustomer(id).subscribe(() => {
+  deleteCustomer() {
+    this.userService.deleteCustomer(this.customerId).subscribe(() => {
         this.findUserList();
       }
     );
   }
-  searchByName(): void{
+
+  searchByName(): void {
     const name = this.activeRoute.snapshot.paramMap.get('name');
-    if (name === ''){
+    if (name === '') {
       this.findUserList();
-    }else{
+    } else {
       this.userService.searchUserByName(name).subscribe(data => {
         this.userList = data;
         this.dataSource = new MatTableDataSource<Product>(this.userList);
@@ -62,12 +64,17 @@ export class AdminListCustomerComponent implements OnInit {
       });
     }
   }
+
   showListUser(): void {
     this.check = this.activeRoute.snapshot.paramMap.has('name');
-    if (this.check){
+    if (this.check) {
       this.searchByName();
-    }else{
+    } else {
       this.findUserList();
     }
+  }
+
+  setData(id: any): void {
+    this.customerId = id;
   }
 }
