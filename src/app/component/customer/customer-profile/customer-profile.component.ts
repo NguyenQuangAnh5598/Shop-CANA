@@ -3,6 +3,7 @@ import {UserService} from '../../../service/user.service';
 import {TokenService} from '../../../service/token.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../model/User';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-customer-profile',
@@ -19,6 +20,7 @@ export class CustomerProfileComponent implements OnInit {
               private router: Router) {
 
   }
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   findCurrentUser(): void {
     this.UserId = this.tokenService.getUserId();

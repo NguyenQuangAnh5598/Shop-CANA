@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {UserService} from '../../../service/user.service';
 import {User} from '../../../model/User';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-admin-profile-customer',
@@ -16,6 +17,7 @@ export class AdminProfileCustomerComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   findUserById(): void{
     this.id = this.activatedRoute.snapshot.params.id;
     this.userService.getUserById(this.id).subscribe(user => {
