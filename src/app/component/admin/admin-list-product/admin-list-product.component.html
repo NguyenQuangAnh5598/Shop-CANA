@@ -87,7 +87,7 @@
       <th mat-header-cell *matHeaderCellDef>Action</th>
       <td mat-cell *matCellDef="let element">
         <a routerLink="/admin-edit-product/{{element.id}}" ><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
-        <a data-toggle="modal" data-target="#exampleModalCenter"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+        <a data-toggle="modal" (click)="setData(element.id)" data-target="#exampleModalCenter"><i class="ik ik-trash-2 f-16 text-red"></i></a>
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -101,7 +101,7 @@
                 Bạn có muốn xóa sản phẩm này không??
               </div>
               <div class="modal-footer">
-                <button (click)="deleteProduct(element.id)" data-dismiss="modal"  type="button" class="btn btn-primary" style="border-radius: 3px;height: 40px;width: 100px;">Đồng ý</button>
+                <button (click)="deleteProduct()" data-dismiss="modal"  type="button" class="btn btn-primary" style="border-radius: 3px;height: 40px;width: 100px;">Đồng ý</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius: 3px;height: 40px;width: 100px;">Đóng</button>
               </div>
             </div>

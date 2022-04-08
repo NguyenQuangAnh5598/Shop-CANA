@@ -15,7 +15,7 @@
 <!-- Cart Start -->
 <div class="container-fluid pt-5">
   <div class="row px-xl-5">
-    <app-customer-order-detail class="col-lg-8" [orderDetailList]="orderDetailList"></app-customer-order-detail>
+    <app-customer-order-detail class="col-lg-8" (orderDelete)="onDelete()"   (orderDetailListChange)="change($event)"  [(orderDetailList)]="orderDetailList"></app-customer-order-detail>
     <div class="col-lg-4">
       <form class="mb-5" action="">
         <div class="input-group">

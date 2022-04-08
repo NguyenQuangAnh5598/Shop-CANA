@@ -12,6 +12,7 @@ import {CategoryService} from '../../../service/category.service';
   styleUrls: ['./admin-list-product.component.scss']
 })
 export class AdminListProductComponent implements OnInit {
+  productId: any;
   searchText = '';
   minPrice = '';
   maxPrice = '';
@@ -42,8 +43,8 @@ export class AdminListProductComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  deleteProduct(id: number) {
-    this.productService.deleteProduct(id).subscribe(() => {
+  deleteProduct() {
+    this.productService.deleteProduct(this.productId).subscribe(() => {
         this.findProductList();
       }
     );
@@ -68,5 +69,9 @@ export class AdminListProductComponent implements OnInit {
     this.categoryService.findAll().subscribe(categoryList => {
       this.categoryList = categoryList;
     });
+  }
+
+  setData(id: any): void {
+this.productId = id;
   }
 }
