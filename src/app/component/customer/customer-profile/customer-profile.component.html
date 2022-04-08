@@ -49,31 +49,51 @@
                 <p style="font-size: 20px">{{user.username}}</p>
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-5">
                 <label style="margin-top: 15px;">Tên khách hàng</label>
               </div>
+
               <div class="col-md-6" >
-                <input type="text" class="form-control" id="name" [(ngModel)]="user.name" style="width: 400px;padding: 10px;margin-top: 5px;"
-                       name="name">
+                <input type="text" matInput class="form-control" id="name" required minlength="6" [(ngModel)]="user.name" style="width: 400px;padding: 10px;margin-top: 5px;"
+                       name="name" #n = "ngModel">
+                <mat-error style="margin-bottom: 10px;" *ngIf="n.hasError('required')">Họ tên không được để trống!
+                </mat-error>
+                <mat-error style="margin-bottom: 10px;" *ngIf="n.hasError('minlength')">Họ tên tối thiểu phải có 6 ký
+                  tự!
+                </mat-error>
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-5">
                 <label style="margin-top: 15px;">Email</label>
               </div>
               <div class="col-md-6">
-                <input type="email" class="form-control" id="email" [(ngModel)]="user.email" style="width: 400px;padding: 10px; margin-top: 10px;"
+                <input type="email" matInput [formControl]="emailFormControl" class="form-control" id="email" [(ngModel)]="user.email" style="width: 400px;padding: 10px; margin-top: 10px;"
                        name="email">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Hãy nhập email đúng định dạng!
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  Email không được để trống!
+                </mat-error>
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-5">
                 <label style="margin-top: 15px;">Địa chỉ</label>
               </div>
               <div class="col-md-6">
-                <input type="text" class="form-control" id="diachi" [(ngModel)]="user.address" style="width: 400px;padding: 10px;margin-top: 10px;"
-                       name="diachi">
+                <input type="text" matInput required minlength="6"  class="form-control" id="diachi" [(ngModel)]="user.address" style="width: 400px;padding: 10px;margin-top: 10px;"
+                       name="diachi" #add = "ngModel">
+                <mat-error style="margin-bottom: 10px;" *ngIf="add.hasError('required')">Địa chỉ không được để trống!
+                </mat-error>
+                <mat-error style="margin-bottom: 10px;" *ngIf="add.hasError('minlength')">Địa chỉ tối thiểu phải có 6 ký
+                  tự!
+                </mat-error>
               </div>
             </div>
             <div class="row">
@@ -90,8 +110,11 @@
                 <label style="margin-top: 15px;"> Số điện thoại</label>
               </div>
               <div class="col-md-6">
-                <input type="text" class="form-control" id="phone" [(ngModel)]="user.phone" style="width: 400px;padding: 10px;margin-top: 10px;margin-bottom: 30px;"
-                       name="phone">
+                <input type="text" pattern="[0-9]{9,10}" required class="form-control" id="phone" [(ngModel)]="user.phone" style="width: 400px;padding: 10px;margin-top: 10px;margin-bottom: 30px;"
+                       name="phone" #sdt = "ngModel">
+                <mat-error *ngIf="sdt.hasError('required')">Số điện thoại không được để trống!</mat-error>
+                <mat-error *ngIf="sdt.hasError('pattern')">Vui lòng nhập ký tự số, tối thiểu 9 ký tự, tối đa 10 ký tự!
+                </mat-error>
               </div>
             </div>
             <div class="row">
