@@ -1,82 +1,225 @@
-<div class="row">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header"><h3>Add New Product</h3></div>
-      <div class="card-body">
-        <form class="forms-sample">
-
-          <!--------------    name -------------------->
-          <div class="form-group">
-            <label for="exampleInputName1">Product Name</label>
-            <input [(ngModel)]="product.name" [ngModelOptions]="{standalone: true}" matInput name="name" type="text"
-                   class="form-control" id="exampleInputName1" placeholder="Product Name">
-          </div>
-
-
-          <div class="row">
-
-            <!--            Price---------->
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="price">Price</label>
-                <input [(ngModel)]="product.price" [ngModelOptions]="{standalone: true}" matInput name="price" type="text"
-                       class="form-control" id="price" placeholder="$$">
-              </div>
-            </div>
-            <!--   ------------------    Category---------------->
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="category">Category</label>
-                <select [(ngModel)]="product.category" name="category" required class="form-control" id="category">
-                  <option *ngFor="let category of categoryList" [value]="category.id">{{category.categoryName}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="row">
-
-            <!--            Quantity---------->
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="quantity">Quantity</label>
-                <input [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" matInput name="quantity"
-                       type="text" class="form-control" id="quantity" placeholder="$$">
-              </div>
-            </div>
-            <!--   ------------------    manufacturer---------------->
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="manufacturer">Manufacturer</label>
-                <input [(ngModel)]="product.manufacturer" [ngModelOptions]="{standalone: true}" matInput
-                       name="manufacturer" type="text" class="form-control" id="manufacturer"
-                       placeholder="Manufacturer">
-              </div>
+<div class="col-md-11" style="margin: auto;">
+  <div class="card" style="width: 80%; margin: 0 auto">
+    <div class="card-header"><h3 style="margin: auto;font-weight: 450;font-size: 25px">Update Product</h3></div>
+    <div class="card-body">
+      <img src="{{product.image}}" style="margin-left: 35%;">
+      <form class="forms-sample example-form" style="margin: 0 auto">
+        <div class="form-group">
+          <!--              <label for="exampleInputName1">Product Name</label>-->
+          <!--              <input [(ngModel)]="form.name" [ngModelOptions]="{standalone: true}" matInput name="name" type="text"-->
+          <!--                     class="form-control" id="exampleInputName1" placeholder="Product Name">-->
+          <!--test product name-->
+          <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
+            <mat-label>Product name</mat-label>
+            <input matInput name="name" type="text"
+                   [(ngModel)]="product.name" [ngModelOptions]="{standalone: true}"
+                   placeholder="Product name..."
+                   required
+                   minlength="3"
+                   #productname="ngModel" >
+            <mat-error *ngIf="productname.hasError('required')">Tên sản phẩm không được để trống!</mat-error>
+            <mat-error *ngIf="productname.hasError('minlength')">Tên sản phẩm tối thiểu 3 ký tự!</mat-error>
+          </mat-form-field>
+          <!--end test product name-->
+        </div>
+        <div class="row">
+          <!--Price---------->
+          <div class="col-md-6">
+            <div class="form-group">
+              <!--                  <label for="price">Price</label>-->
+              <!--                  <input [(ngModel)]="form.price" [ngModelOptions]="{standalone: true}" matInput name="price" type="text"-->
+              <!--                         class="form-control" id="price" placeholder="$$">-->
+              <!--                  test price-->
+              <mat-form-field class="example-full-width" floatLabel="always" appearance="fill" style="margin-top: 10px">
+                <mat-label>Price</mat-label>
+                <input matInput name="price" type="number"
+                       [(ngModel)]="product.price" [ngModelOptions]="{standalone: true}"
+                       required
+                       min="0"
+                       #price="ngModel" (change)="checkPrice(price.value)">
+                <span matPrefix>$&nbsp;</span>
+                <mat-error *ngIf="price.hasError('required')">Giá sản phẩm không được để trống!</mat-error>
+              </mat-form-field>
+              <!--                  end test price-->
             </div>
           </div>
-
-
-          <!---------------       description  ---------------- -->
-
-          <div class="form-group">
-            <label for="description">Description</label>
-            <input [(ngModel)]="product.description" [ngModelOptions]="{standalone: true}" matInput name="description"
-                   type="text" class="form-control" id="description" placeholder="description">
-          </div>
-          <!------------------------------image------------------>
-          <div class="form-group">
-            <label>Product Image</label>
-            <div class="input-group col-xs-12">
-              <app-upload-file (giveUrl)="uploadFile($event)"></app-upload-file>
+          <!--   ------------------    Category---------------->
+          <div class="col-md-6">
+            <div class="form-group">
+              <!--                  <label for="category">Category</label>-->
+              <!--                  <select [(ngModel)]="form.category" name="category" required class="form-control" id="category">-->
+              <!--                    <option *ngFor="let category of categoryList" [value]="category.id">{{category.categoryName}}</option>-->
+              <!--                  </select>-->
+              <!--                  test category-->
+              <mat-form-field appearance="fill" class="example-full-width" style="margin-top: 10px" >
+                <mat-label>Category</mat-label>
+                <mat-select #category="ngModel" [(ngModel)]="product.category.id" name="category" required id="category" >
+                  <mat-option *ngFor="let category of categoryList" [value]="category.id">{{category.categoryName}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="category.hasError('required')">Category không được để trống!</mat-error>
+              </mat-form-field>
+              <!--                  end test category-->
             </div>
           </div>
+        </div>
+        <div class="row">
+
+          <!--            Quantity---------->
+          <div class="col-md-6">
+            <div class="form-group">
+              <!--                  <label for="quantity">Quantity</label>-->
+              <!--                  <input [(ngModel)]="form.quantity" [ngModelOptions]="{standalone: true}" matInput name="quantity"-->
+              <!--                         type="text" class="form-control" id="quantity" placeholder="">-->
+              <!--                  test quantity-->
+              <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
+                <mat-label>Quantity</mat-label>
+                <input matInput name="quantity" type="number"
+                       [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}"
+                       required
+                       id="quantity"
+                       placeholder="quantity..."
+                       min="0"
+                       #quantity="ngModel"  (change)="checkQuantity(quantity.value)">
+                <mat-error *ngIf="quantity.hasError('required')">Số lượng sản phẩm không được để trống!</mat-error>
+              </mat-form-field>
+              <!--                  end test quantity-->
+            </div>
+          </div>
+          <!--   ------------------    manufacturer---------------->
+          <div class="col-md-6">
+            <div class="form-group">
+              <!--                  <label for="manufacturer">Manufacturer</label>-->
+              <!--                  <input [(ngModel)]="form.manufacturer" [ngModelOptions]="{standalone: true}" matInput-->
+              <!--                         name="manufacturer" type="text" class="form-control" id="manufacturer"-->
+              <!--                         placeholder="Manufacturer">-->
+              <!--                  test manufacture-->
+              <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
+                <mat-label>Manufacture</mat-label>
+                <input matInput name="manufacturer" type="text"
+                       [(ngModel)]="product.manufacturer" [ngModelOptions]="{standalone: true}"
+                       placeholder="Manufacture..."
+                       required
+                       minlength="3"
+                       #manu="ngModel">
+                <mat-error *ngIf="manu.hasError('required')">Manufacture không được để trống!</mat-error>
+
+              </mat-form-field>
+              <!--                  end test manufacture-->
+            </div>
+          </div>
+        </div>
 
 
-          <button (click)="update()" type="submit" class="btn btn-primary mr-2">Save</button>
-          <button routerLink="" class="btn btn-light">Cancel</button>
-        </form>
-      </div>
+        <!---------------       description  ---------------- -->
+
+        <div class="form-group">
+          <!--              <label for="description">Description</label>-->
+          <!--              <input [(ngModel)]="form.description" [ngModelOptions]="{standalone: true}" matInput name="description"-->
+          <!--                     type="text" class="form-control" id="description" placeholder="description">-->
+          <!--              test des-->
+          <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
+            <mat-label>Description</mat-label>
+            <textarea matInput id="description" name="description" [(ngModel)]="product.description" [ngModelOptions]="{standalone: true}"></textarea>
+          </mat-form-field>
+          <!--              end test des-->
+        </div>
+        <!------------------------------image------------------>
+        <div class="form-group" style="font-size: inherit;font-weight: 400;line-height: 1.125;">
+          <label>Product Image</label>
+
+          <div class="input-group col-xs-12">
+            <app-upload-file (giveUrl)="uploadFile($event)"></app-upload-file>
+          </div>
+        </div>
+
+
+        <button type="submit" (click)="update()" class="btn btn-primary mr-2" style="height: auto;width: 100px;margin-left: 51%;">Save</button>
+        <button routerLink="" class="btn btn-light" style="background-color: #E6E6FA;height: auto;width: 100px;margin-left: 25px;">Cancel</button>
+      </form>
     </div>
   </div>
 </div>
+
+
+<!--<div class="row">-->
+<!--  <div class="col-md-6">-->
+<!--    <div class="card">-->
+<!--      <div class="card-header"><h3>Add New Product</h3></div>-->
+<!--      <div class="card-body">-->
+<!--        <form class="forms-sample">-->
+
+<!--          &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;    name &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--          <div class="form-group">-->
+<!--            <label for="exampleInputName1">Product Name</label>-->
+<!--            <input [(ngModel)]="product.name" [ngModelOptions]="{standalone: true}" matInput name="name" type="text"-->
+<!--                   class="form-control" id="exampleInputName1" placeholder="Product Name">-->
+<!--          </div>-->
+
+
+<!--          <div class="row">-->
+
+<!--            &lt;!&ndash;            Price&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--            <div class="col-md-6">-->
+<!--              <div class="form-group">-->
+<!--                <label for="price">Price</label>-->
+<!--                <input [(ngModel)]="product.price" [ngModelOptions]="{standalone: true}" matInput name="price" type="text"-->
+<!--                       class="form-control" id="price" placeholder="$$">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;   &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;    Category&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--            <div class="col-md-6">-->
+<!--              <div class="form-group">-->
+<!--                <label for="category">Category</label>-->
+<!--                <select [(ngModel)]="product.category" name="category" required class="form-control" id="category">-->
+<!--                  <option *ngFor="let category of categoryList" [value]="category.id">{{category.categoryName}}</option>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+<!--          <div class="row">-->
+
+<!--            &lt;!&ndash;            Quantity&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--            <div class="col-md-6">-->
+<!--              <div class="form-group">-->
+<!--                <label for="quantity">Quantity</label>-->
+<!--                <input [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" matInput name="quantity"-->
+<!--                       type="text" class="form-control" id="quantity" placeholder="$$">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;   &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;    manufacturer&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--            <div class="col-md-6">-->
+<!--              <div class="form-group">-->
+<!--                <label for="manufacturer">Manufacturer</label>-->
+<!--                <input [(ngModel)]="product.manufacturer" [ngModelOptions]="{standalone: true}" matInput-->
+<!--                       name="manufacturer" type="text" class="form-control" id="manufacturer"-->
+<!--                       placeholder="Manufacturer">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+<!--          &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;       description  &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+
+<!--          <div class="form-group">-->
+<!--            <label for="description">Description</label>-->
+<!--            <input [(ngModel)]="product.description" [ngModelOptions]="{standalone: true}" matInput name="description"-->
+<!--                   type="text" class="form-control" id="description" placeholder="description">-->
+<!--          </div>-->
+<!--          &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;image&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--          <div class="form-group">-->
+<!--            <label>Product Image</label>-->
+<!--            <div class="input-group col-xs-12">-->
+<!--              <app-upload-file (giveUrl)="uploadFile($event)"></app-upload-file>-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+<!--          <button (click)="update()" type="submit" class="btn btn-primary mr-2">Save</button>-->
+<!--          <button routerLink="" class="btn btn-light">Cancel</button>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
