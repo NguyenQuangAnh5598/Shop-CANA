@@ -52,7 +52,7 @@
 
             <div class="row">
               <div class="col-md-5">
-                <label style="margin-top: 15px;">Tên khách hàng</label>
+                <label for="name" style="margin-top: 15px;">Tên khách hàng</label>
               </div>
 
               <div class="col-md-6" >
@@ -68,7 +68,7 @@
 
             <div class="row">
               <div class="col-md-5">
-                <label style="margin-top: 15px;">Email</label>
+                <label for="email" style="margin-top: 15px;">Email</label>
               </div>
               <div class="col-md-6">
                 <input type="email" matInput [formControl]="emailFormControl" class="form-control" id="email" [(ngModel)]="user.email" style="width: 400px;padding: 10px; margin-top: 10px;"
@@ -84,11 +84,11 @@
 
             <div class="row">
               <div class="col-md-5">
-                <label style="margin-top: 15px;">Địa chỉ</label>
+                <label for="address"  style="margin-top: 15px;">Địa chỉ</label>
               </div>
               <div class="col-md-6">
-                <input type="text" matInput required minlength="6"  class="form-control" id="diachi" [(ngModel)]="user.address" style="width: 400px;padding: 10px;margin-top: 10px;"
-                       name="diachi" #add = "ngModel">
+                <input type="text" matInput required minlength="6"  class="form-control" id="address" [(ngModel)]="user.address" style="width: 400px;padding: 10px;margin-top: 10px;"
+                       name="address" #add = "ngModel">
                 <mat-error style="margin-bottom: 10px;" *ngIf="add.hasError('required')">Địa chỉ không được để trống!
                 </mat-error>
                 <mat-error style="margin-bottom: 10px;" *ngIf="add.hasError('minlength')">Địa chỉ tối thiểu phải có 6 ký
@@ -98,16 +98,16 @@
             </div>
             <div class="row">
               <div class="col-md-5">
-                <label style="margin-top: 15px;">Ngày sinh</label>
+                <label for="dob" style="margin-top: 15px;">Ngày sinh</label>
               </div>
               <div class="col-md-6">
-                <input type="date" class="form-control" id="ngaysinh" [(ngModel)]="user.dob" style="width: 400px;padding:10px;margin-top: 10px;"
-                       name="ngaysinh">
+                <input type="date" class="form-control" max="{{maxDate}}" [(ngModel)]="user.dob" id="dob" style="width: 400px;padding:10px;margin-top: 10px;"
+                       name="dob">
               </div>
             </div>
             <div class="row">
               <div class="col-md-5">
-                <label style="margin-top: 15px;"> Số điện thoại</label>
+                <label for="phone" style="margin-top: 15px;"> Số điện thoại</label>
               </div>
               <div class="col-md-6">
                 <input type="text" pattern="[0-9]{9,10}" required class="form-control" id="phone" [(ngModel)]="user.phone" style="width: 400px;padding: 10px;margin-top: 10px;margin-bottom: 30px;"
