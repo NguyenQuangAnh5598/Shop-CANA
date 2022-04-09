@@ -13,6 +13,13 @@ import {FormControl, Validators} from '@angular/forms';
 export class CustomerProfileComponent implements OnInit {
   UserId = 0;
   user: User = {};
+  time = new Date();
+  maxDate: string;
+  date = this.time.getDate();
+  stringDate: string;
+  month = this.time.getMonth() + 1;
+  stringMonth: string;
+  year = this.time.getFullYear();
 
   constructor(private userService: UserService,
               private tokenService: TokenService,
@@ -36,11 +43,23 @@ export class CustomerProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.date < 10) {
+      this.stringDate = '0' + this.date;
+    }
+    else {
+      this.stringDate = String(this.date);
+    }
+    if (this.month < 10) {
+      this.stringMonth = '0' + this.month;
+    }
+    else {
+      this.stringMonth = String(this.month);
+    }
+    this.maxDate = this.year + '-' + this.stringMonth + '-' + this.stringDate;
     this.findCurrentUser();
   }
 
   uploadFile(event): void {
     this.user.avatar = event;
   }
-
 }

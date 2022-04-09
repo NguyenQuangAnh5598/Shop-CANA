@@ -46,4 +46,8 @@ export class OrderService {
     console.log('aaaaaaaaaaaaaaa' + dateTimeDTO);
     return this.http.put<any>(API_LOCAL + 'order/statisticalOrderByTime', dateTimeDTO);
   }
+
+  getOrderCancelByTime(dateTimeDTO: DateTimeDTO): Observable<any> {
+    return this.http.put<any>(API_LOCAL + 'order/statisticalOrderCancelByTime', dateTimeDTO);
+  }
 }

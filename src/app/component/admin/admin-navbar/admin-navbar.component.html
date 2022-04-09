@@ -10,6 +10,9 @@
       <li class="nav-item ">
         <a class="nav-link navbar_link " aria-current="page" routerLink="/admin-home">Home</a>
       </li>
+      <li class="nav-item ">
+        <a class="nav-link navbar_link " aria-current="page" routerLink="/">Shop Home</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link navbar_link" aria-current="page" routerLink="/admin-home/admin-list-product">ProductList</a>
       </li>
@@ -27,8 +30,8 @@
       </li>
     </ul>
     <ul class="navbar-nav flex-row">
-      <li class="nav-item" style="margin-top: 27px;">
-        <h5 *ngIf="token != null">Well come {{name}}</h5>
+      <li class="nav-item" style="margin-top: 27px">
+        <h5 *ngIf="token != null" >WelCome {{name}}</h5>
       </li>
       <li class="nav-item" style="margin-top: 10px;cursor: pointer;font-weight: 450;">
         <a (click)="logout()" *ngIf="token != null" class="nav-item nav-link navbar_link">Logout</a>

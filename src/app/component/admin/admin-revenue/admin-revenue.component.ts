@@ -12,9 +12,10 @@ import {DateTimeDTO} from '../../../model/DateTimeDTO';
 })
 export class AdminRevenueComponent implements OnInit {
   status: string;
+  check: boolean;
   count = 0;
   dateTimeDTO: DateTimeDTO = {};
-  orderList: Order[] = [];
+  orderList: Order[];
   displayedColumns: string[] = ['name', 'totalprice', 'time', 'action'];
   dataSource: any;
   totalPrice = 0;
@@ -30,6 +31,8 @@ export class AdminRevenueComponent implements OnInit {
   }
 
   findCompletedOrderList(): void {
+    this.check = true;
+    console.log(this.check);
     this.status = 'Tổng doanh thu';
     this.orderService.findAllOrderByStatusId(4).subscribe(data => {
       this.orderList = data;
@@ -61,12 +64,33 @@ export class AdminRevenueComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       console.log(this.dataSource);
       this.totalPrice = 0;
+      this.count = 0;
       this.getSumOfOrderTotalPrice();
       this.count = this.orderList.length;
+      console.log('avdfadsfdsafsea' + this.count);
+    });
+  }
+
+  getOrderCancelListByDate(): void {
+    this.status = 'Tổng';
+    this.dateTimeDTO.startDate = this.startDate;
+    this.dateTimeDTO.endDate = this.endDate;
+    console.log(this.dateTimeDTO);
+    this.orderService.getOrderCancelByTime(this.dateTimeDTO).subscribe(data => {
+      this.orderList = data;
+      this.dataSource = new MatTableDataSource<Order>(data);
+      this.dataSource.paginator = this.paginator;
+      console.log(this.dataSource);
+      this.totalPrice = 0;
+      this.count = 0;
+      this.count = this.orderList.length;
+      this.getSumOfOrderTotalPrice();
     });
   }
 
   findCancelOrderList(): void {
+    this.check = false;
+    console.log(this.check);
     this.status = 'Tổng';
     this.orderService.findAllOrderByStatusId(5).subscribe(data => {
       this.orderList = data;
@@ -81,7 +105,7 @@ export class AdminRevenueComponent implements OnInit {
 
   onButtonClick($e): void {
     console.log($e);
-    const clickedElement = $e.target ;
+    const clickedElement = $e.target;
     console.log(clickedElement);
     console.log($e.target.value);
     if (clickedElement.nodeName === 'A') {

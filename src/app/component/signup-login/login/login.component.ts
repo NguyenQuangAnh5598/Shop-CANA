@@ -39,8 +39,7 @@ export class LoginComponent implements OnInit {
         this.tokenService.setAvatar(data.avatar);
         this.tokenService.setUserId(data.id);
         console.log(data.roles[0].authority);
-        // tslint:disable-next-line:triple-equals
-        if (data.roles[0].authority == 'ADMIN') {
+        if (data.roles[0].authority === 'ADMIN') {
           this.router.navigate(['/admin-home']).then(() => {
             window.location.reload();
           });
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
           });
         }
       } else {
-        alert('Your account has been error');
+        alert('Error account');
       }
     });
   }

@@ -62,7 +62,7 @@
       </a>
 <!---------------------------      rỏ hàng ------------------------------->
 
-      <a routerLink="/home/customer-payment" class="btn border">
+      <a  routerLink="/home/customer-payment" class="btn border">
         <i class="fas fa-shopping-cart text-primary"></i>
         <span class="badge">{{count}}</span>
       </a>
@@ -128,11 +128,11 @@
 
 
             <div id="topheader" class="navbar-nav mr-auto py-0" (click)="onButtonClick($event)">
-<!--              <a routerLink="/home" class="nav-item nav-item-first nav-link active">Home</a>-->
               <a routerLink="/home" class="nav-item nav-item-btn nav-item-first nav-link btn-item active" >Home</a>
               <a routerLink="/home/customer-shop" class="nav-item nav-item-btn nav-link btn-item " >Shop</a>
-              <a routerLink="/home/customer-list-order" class="nav-item nav-item-btn nav-link btn-item " >Orders</a>
-              <div class="nav-item nav-item-btn dropdown">
+              <a  routerLink="/home/customer-list-order" class="nav-item nav-item-btn nav-link btn-item ">Orders</a>
+              <a  routerLink="/admin-home" class="nav-item nav-item-first nav-link active">Manager</a>
+              <div  class="nav-item nav-item-btn dropdown">
                 <a class="nav-link dropdown-toggle btn-item" data-toggle="dropdown">Information</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a routerLink="/home/customer-profile" class="dropdown-item">Profile</a>
@@ -148,11 +148,10 @@
 
 
             <div class="navbar-nav ml-auto py-0">
-
-              <h5 *ngIf="token != null" style="margin-top: 20px;">Well come {{name}}</h5>
-              <a (click)="logout()" *ngIf="token != null" class="nav-item nav-link">Logout</a>
-              <a routerLink="/login" *ngIf="token== null" class="nav-item nav-link">Login</a>
-              <a routerLink="/signup" *ngIf="token== null" class="nav-item nav-link">Register</a>
+              <h5 *ngIf="token != null" style="margin-top: 20px; color: #D19C97">WelCome {{name}}|</h5>
+              <a routerLink="" (click)="logout()" *ngIf="token != null" class="nav-item nav-link">Logout</a>
+              <a class="nav-item nav-item-btn nav-link btn-item " routerLink="/login" *ngIf="token== null" >Login</a>
+              <a class="nav-item nav-item-btn nav-link btn-item " routerLink="/signup" *ngIf="token== null" >Register</a>
 
             </div>
           </div>
