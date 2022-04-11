@@ -44,7 +44,6 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.tokenService.logout();
     window.location.reload();
-    this.router.navigate(['/home']);
   }
 
   onButtonClick($e): void {

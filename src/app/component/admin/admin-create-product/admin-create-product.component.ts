@@ -53,12 +53,22 @@ export class AdminCreateProductComponent implements OnInit {
     };
     console.log(this.form.category);
     this.productService.createNewProduct(this.product).subscribe(() => {
-      this.router.navigate(['/admin-list-product']);
+      this.router.navigate(['/admin-home/admin-list-product']);
     });
   }
 
   uploadFile(event): void {
     this.form.image = event;
   }
+  checkQuantity(value: any): void {
+    if (value < 0){
+      this.form.quantity = null;
+    }
+  }
 
+  checkPrice(value: any): void {
+    if (value < 0){
+      this.form.price = null;
+    }
+  }
 }

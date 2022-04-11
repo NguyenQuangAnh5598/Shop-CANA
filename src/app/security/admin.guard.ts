@@ -15,8 +15,7 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.tokenService.getToken()) {
-      // tslint:disable-next-line:triple-equals
-      if (this.tokenService.getRole()[0].authority == 'ADMIN') {
+      if (this.tokenService.getRole()[0].authority === 'ADMIN') {
         return true;
       } else {
         this.router.navigate(['/error']);

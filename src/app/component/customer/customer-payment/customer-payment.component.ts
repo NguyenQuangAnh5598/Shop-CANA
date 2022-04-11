@@ -38,7 +38,7 @@ export class CustomerPaymentComponent implements OnInit {
       this.orderService.findAllByOrder(order.id).subscribe(orderDetailList => {
         this.orderDetailList = orderDetailList;
         console.log(this.orderDetailList);
-        this.getSum();
+        this.getSum(this.orderDetailList);
       });
     });
   }
@@ -46,10 +46,10 @@ export class CustomerPaymentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getSum(): void {
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.orderDetailList.length; i++) {
-      this.totalPrice += (this.orderDetailList[i].product.price * this.orderDetailList[i].orderQuantity);
+  getSum(orderDetailList: any): void {
+    this.totalPrice = 0;
+    for (const item of orderDetailList) {
+      this.totalPrice += (item.product.price * item.orderQuantity);
     }
   }
 
@@ -63,10 +63,19 @@ export class CustomerPaymentComponent implements OnInit {
       if (JSON.stringify(data) === JSON.stringify(this.error)) {
         console.log(true);
         this.router.navigate(['/error']);
-      }else {
+      } else {
         alert('Đặt hàng thành công, hãy chờ');
         this.router.navigate(['home/customer-list-order']);
       }
     });
+  }
+
+  change(orderDetailList: any): void {
+    this.orderDetailList = orderDetailList;
+    this.getSum(orderDetailList);
+  }
+
+  onDelete(): void {
+    this.getSum(this.orderDetailList);
   }
 }

@@ -3,6 +3,7 @@ import {UserService} from '../../../service/user.service';
 import {TokenService} from '../../../service/token.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../model/User';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-customer-profile',
@@ -12,6 +13,13 @@ import {User} from '../../../model/User';
 export class CustomerProfileComponent implements OnInit {
   UserId = 0;
   user: User = {};
+  time = new Date();
+  maxDate: string;
+  date = this.time.getDate();
+  stringDate: string;
+  month = this.time.getMonth() + 1;
+  stringMonth: string;
+  year = this.time.getFullYear();
 
   constructor(private userService: UserService,
               private tokenService: TokenService,
@@ -19,6 +27,7 @@ export class CustomerProfileComponent implements OnInit {
               private router: Router) {
 
   }
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   findCurrentUser(): void {
     this.UserId = this.tokenService.getUserId();
@@ -34,11 +43,23 @@ export class CustomerProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.date < 10) {
+      this.stringDate = '0' + this.date;
+    }
+    else {
+      this.stringDate = String(this.date);
+    }
+    if (this.month < 10) {
+      this.stringMonth = '0' + this.month;
+    }
+    else {
+      this.stringMonth = String(this.month);
+    }
+    this.maxDate = this.year + '-' + this.stringMonth + '-' + this.stringDate;
     this.findCurrentUser();
   }
 
   uploadFile(event): void {
     this.user.avatar = event;
   }
-
 }

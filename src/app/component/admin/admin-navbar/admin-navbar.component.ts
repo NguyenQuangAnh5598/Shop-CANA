@@ -35,7 +35,6 @@ export class AdminNavbarComponent implements OnInit {
   }
   logout(): void {
     this.tokenService.logout();
-    window.location.reload();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }

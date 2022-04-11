@@ -97,7 +97,7 @@
       <a (click)="findCompletedOrderList()" class="nav-item nav-link active">Đơn Hoàn Thành</a>
 
 
-      <a (click)="findCancelOrderList()" class="nav-item nav-link">Đơn Bị Hủy</a>
+      <a style="margin-right: 855px;" (click)="findCancelOrderList()" class="nav-item nav-link">Đơn Bị Hủy</a>
 <!--      <div class="nav-item dropdown">-->
 <!--        <div class="dropdown-menu rounded-0 m-0">-->
 <!--          <a routerLink="/home/customer-profile" class="dropdown-item">Profile</a>-->
@@ -105,6 +105,21 @@
 <!--        </div>-->
 <!--      </div>-->
       <!--            <a href="contact.html" class="nav-item nav-link">Contact</a>-->
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input  [rangePicker]="picker">
+          <input required #starttDate="ngModel" [(ngModel)]="startDate" matStartDate placeholder="Start date">
+          <input required #enddDate="ngModel" [(ngModel)]="endDate" matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error *ngIf="starttDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+        <mat-error *ngIf="enddDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+      </mat-form-field>
+      <button *ngIf="check == true" class="btn-find" (click)="getOrderListByDate()" style="width: 60px; height: 80% ; margin-left: 30px; margin-top: 12px; background-color: #D19C97;" mat-raised-button>Find</button>
+      <button *ngIf="check == false" class="btn-find" (click)="getOrderCancelListByDate()" style="width: 60px; height: 80% ; margin-left: 30px; margin-top: 12px; background-color: #D19C97;" mat-raised-button>Find</button>
     </div>
 <!--    <div class="navbar-nav ml-auto py-0">-->
 <!--      <a routerLink="/login" *ngIf="token== null" class="nav-item nav-link">Login</a>-->
@@ -168,22 +183,21 @@
     </div>
   </div>
 </div>
+<!--<div style="display: flex;">-->
+<!--<mat-form-field appearance="fill">-->
+<!--  <mat-label>Enter a date range</mat-label>-->
+<!--  <mat-date-range-input  [rangePicker]="picker">-->
+<!--    <input required #starttDate="ngModel" [(ngModel)]="startDate" matStartDate placeholder="Start date">-->
+<!--    <input required #enddDate="ngModel" [(ngModel)]="endDate" matEndDate placeholder="End date">-->
+<!--  </mat-date-range-input>-->
+<!--  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--  <mat-date-range-picker #picker></mat-date-range-picker>-->
 
-<mat-form-field appearance="fill">
-  <mat-label>Enter a date range</mat-label>
-  <mat-date-range-input [rangePicker]="picker">
-    <input required #starttDate="ngModel" [(ngModel)]="startDate" matStartDate placeholder="Start date">
-    <input required #enddDate="ngModel" [(ngModel)]="endDate" matEndDate placeholder="End date">
-  </mat-date-range-input>
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-date-range-picker #picker></mat-date-range-picker>
-
-  <mat-error *ngIf="starttDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-  <mat-error *ngIf="enddDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-</mat-form-field>
+<!--  <mat-error *ngIf="starttDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>-->
+<!--  <mat-error *ngIf="enddDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>-->
+<!--</mat-form-field>-->
 
 
-<div>
-  <button (click)="getOrderListByDate()" style="width: 60px; height: 60px" mat-raised-button>Find</button>
 
-</div>
+<!--  <button class="btn-find" (click)="getOrderListByDate()" style="width: 60px; height: 80% ; margin-left: 30px; margin-top: 12px; background-color: #D19C97;" mat-raised-button>Find</button>-->
+<!--</div>-->
