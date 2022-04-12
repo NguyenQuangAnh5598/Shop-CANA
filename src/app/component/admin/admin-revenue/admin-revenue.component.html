@@ -24,7 +24,7 @@
       <div class="widget-body">
         <div class="d-flex justify-content-between align-items-center">
           <div class="state">
-            <h6>Tổng Order</h6>
+            <h6>All of order</h6>
             <h2>{{count}}</h2>
           </div>
           <div class="icon">
@@ -94,10 +94,10 @@
     <div class="navbar-nav mr-auto py-0" (click)="onButtonClick($event)">
 
 
-      <a (click)="findCompletedOrderList()" class="nav-item nav-link active">Đơn Hoàn Thành</a>
+      <a (click)="findCompletedOrderList()" class="nav-item nav-link active">Completed Orders</a>
 
 
-      <a style="margin-right: 855px;" (click)="findCancelOrderList()" class="nav-item nav-link">Đơn Bị Hủy</a>
+      <a style="margin-right: 855px;" (click)="findCancelOrderList()" class="nav-item nav-link">Cancel Orders</a>
 <!--      <div class="nav-item dropdown">-->
 <!--        <div class="dropdown-menu rounded-0 m-0">-->
 <!--          <a routerLink="/home/customer-profile" class="dropdown-item">Profile</a>-->
@@ -132,7 +132,7 @@
 <div class="col-md-12">
   <div class="card table-card">
     <div class="card-header">
-      <h3 style="margin: auto;font-weight: 450;font-size: 25px">Danh sách Đơn Hàng Đã Hoàn Thành</h3>
+      <h2 style="margin: auto;font-weight: 450;font-size: 25px">Order List</h2>
       <div class="card-header-right">
         <ul class="list-unstyled card-option">
           <li><i class="ik ik-chevron-left action-toggle"></i></li>
@@ -179,7 +179,6 @@
                        aria-label="Select page of periodic elements">
         </mat-paginator>
       </div>
-      <div>{{totalPrice}}</div>
     </div>
   </div>
 </div>
