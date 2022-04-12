@@ -23,6 +23,9 @@ export class CustomerPaymentComponent implements OnInit {
   error: any = {
     message: '403'
   };
+  error1: any = {
+    message: 'NO'
+  };
 
   constructor(private orderService: OrderService,
               private tokenService: TokenService,
@@ -55,17 +58,22 @@ export class CustomerPaymentComponent implements OnInit {
 
   payment(): void {
     this.orderService.payment(this.orderId).subscribe(data => {
-      const countChange = new CountChangeDTO();
-      countChange.id = -1;
-      countChange.status = 'payment';
-      this.emitService.emitChange(countChange);
       console.log(data);
-      if (JSON.stringify(data) === JSON.stringify(this.error)) {
-        console.log(true);
-        this.router.navigate(['/error']);
+      if (JSON.stringify(data) === JSON.stringify(this.error1)) {
+        alert('Không có sản phẩm trong rỏ hàng');
       } else {
-        alert('Đặt hàng thành công, hãy chờ');
-        this.router.navigate(['home/customer-list-order']);
+        const countChange = new CountChangeDTO();
+        countChange.id = -1;
+        countChange.status = 'payment';
+        this.emitService.emitChange(countChange);
+        console.log(data);
+        if (JSON.stringify(data) === JSON.stringify(this.error)) {
+          console.log(true);
+          this.router.navigate(['/error']);
+        } else {
+          alert('Đặt hàng thành công, hãy chờ');
+          this.router.navigate(['home/customer-list-order']);
+        }
       }
     });
   }

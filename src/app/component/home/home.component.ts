@@ -49,10 +49,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  Onactivate(id): void {
+  Onactivate(child): void {
     // this.showAllProductByPage2(id);
     // this.showProductByName(id);
-    this.child = id;
+    this.child = child;
   }
 
   getCurrentOrderDetailList(): void {

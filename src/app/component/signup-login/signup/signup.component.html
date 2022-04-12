@@ -45,10 +45,9 @@
                      required
                      minlength="6"
                      #name="ngModel" type="text">
-              <mat-error style="margin-bottom: 10px;" *ngIf="name.hasError('required')">Họ tên không được để trống!
+              <mat-error style="margin-bottom: 10px;" *ngIf="name.hasError('required')">Name cannot be blank!
               </mat-error>
-              <mat-error style="margin-bottom: 10px;" *ngIf="name.hasError('minlength')">Họ tên tối thiểu phải có 6 ký
-                tự!
+              <mat-error style="margin-bottom: 10px;" *ngIf="name.hasError('minlength')">Please enter at least 6 characters!
               </mat-error>
             </mat-form-field>
             <!--end test name-->
@@ -72,10 +71,10 @@
                      matInput
                      placeholder="Your UserName"
                      required
-                     minlength="3"
+                     minlength="6"
                      #username="ngModel" type="text">
-              <mat-error *ngIf="username.hasError('required')">Username không được để trống!</mat-error>
-              <mat-error *ngIf="username.hasError('minlength')">Username tối thiểu 3 ký tự!</mat-error>
+              <mat-error *ngIf="username.hasError('required')">Username cannot be blank!</mat-error>
+              <mat-error *ngIf="username.hasError('minlength')">Please enter at least 6 characters!</mat-error>
             </mat-form-field>
             <!--end test uername-->
             <!--email-->
@@ -85,10 +84,10 @@
                      [(ngModel)]="form.email"
                      placeholder="Ex. abc@gmail.com">
               <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                Please enter a valid email address
+                Please enter your email in the correct format!
               </mat-error>
               <mat-error *ngIf="emailFormControl.hasError('required')">
-                Email không được để trống
+                Email cannot be blank!
               </mat-error>
             </mat-form-field>
             <!--            end email-->
@@ -124,8 +123,8 @@
                 required
                 minlength="6"
                 #password="ngModel">
-              <mat-error *ngIf="password.hasError('required')">Mật khẩu không được để trống</mat-error>
-              <mat-error *ngIf="password.hasError('minlength')">Vui long nhap toi thieu 6 ky tu!</mat-error>
+              <mat-error *ngIf="password.hasError('required')">Password cannot be blank</mat-error>
+              <mat-error *ngIf="password.hasError('minlength')">Please enter at least 6 characters!</mat-error>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                       [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -158,8 +157,8 @@
                 required
                 type="text" pattern="[0-9]{9,10}"
                 #phone="ngModel">
-              <mat-error *ngIf="phone.hasError('required')">Số điện thoại không được để trống!</mat-error>
-              <mat-error *ngIf="phone.hasError('pattern')">Vui long nhạp ky tu so, toi thieu 9, toi da 10 ky tu
+              <mat-error *ngIf="phone.hasError('required')">Phone number cannot be blank!</mat-error>
+              <mat-error *ngIf="phone.hasError('pattern')">Please enter number, min 9 characters, max 10 characters!
               </mat-error>
             </mat-form-field>
             <!--end test phone-->
@@ -190,14 +189,14 @@
                 minlength="6"
                 type="text"
                 #address="ngModel">
-              <mat-error *ngIf="address.hasError('required')">Địa chỉ không được để trống!</mat-error>
-              <mat-error *ngIf="address.hasError('minlength')">Vui long nhap toi thieu 6 ky tu!</mat-error>
+              <mat-error *ngIf="address.hasError('required')">Address cannot be blank!</mat-error>
+              <mat-error *ngIf="address.hasError('minlength')">Please enter at least 6 characters!</mat-error>
             </mat-form-field>
             <!--end test address-->
 
             <div class="sign-btn text-center">
               <button class="btn btn-theme" type="submit"
-                      style=" height: 45px;border-radius: 5px; color: #0b2e13">Tạo tài khoản
+                      style=" height: 45px;border-radius: 5px; color: #0b2e13">Create Account
               </button>
             </div>
           </form>
@@ -205,7 +204,7 @@
             <a routerLink="/">Back to Home</a>
           </div>
           <div class="register">
-            <p>Bạn đã có tài khoản <a routerLink="/login">Đăng nhập ngay</a></p>
+            <p>You already have account<a routerLink="/login">Login now</a></p>
           </div>
         </div>
       </div>

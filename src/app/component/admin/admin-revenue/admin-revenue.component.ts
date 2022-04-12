@@ -33,7 +33,7 @@ export class AdminRevenueComponent implements OnInit {
   findCompletedOrderList(): void {
     this.check = true;
     console.log(this.check);
-    this.status = 'Tổng doanh thu';
+    this.status = 'Total Income';
     this.orderService.findAllOrderByStatusId(4).subscribe(data => {
       this.orderList = data;
       console.log(this.orderList);
@@ -54,7 +54,7 @@ export class AdminRevenueComponent implements OnInit {
   }
 
   getOrderListByDate(): void {
-    this.status = 'Tổng doanh thu';
+    this.status = 'Total Income';
     this.dateTimeDTO.startDate = this.startDate;
     this.dateTimeDTO.endDate = this.endDate;
     console.log(this.dateTimeDTO);
@@ -72,7 +72,7 @@ export class AdminRevenueComponent implements OnInit {
   }
 
   getOrderCancelListByDate(): void {
-    this.status = 'Tổng';
+    this.status = 'Total';
     this.dateTimeDTO.startDate = this.startDate;
     this.dateTimeDTO.endDate = this.endDate;
     console.log(this.dateTimeDTO);
@@ -91,7 +91,7 @@ export class AdminRevenueComponent implements OnInit {
   findCancelOrderList(): void {
     this.check = false;
     console.log(this.check);
-    this.status = 'Tổng';
+    this.status = 'Total';
     this.orderService.findAllOrderByStatusId(5).subscribe(data => {
       this.orderList = data;
       console.log(this.orderList);

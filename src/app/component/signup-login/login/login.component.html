@@ -25,8 +25,8 @@
                      required
                      minlength="3"
                      #username="ngModel" type="text">
-              <mat-error *ngIf="username.hasError('required')">Username không được để trống!</mat-error>
-              <mat-error *ngIf="username.hasError('minlength')">Username tối thiểu 3 ký tự!</mat-error>
+              <mat-error *ngIf="username.hasError('required')">Username cannot be blank!</mat-error>
+              <mat-error *ngIf="username.hasError('minlength')">Please enter at least 3 characters!</mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 10px">
               <mat-label>Enter your password</mat-label>
@@ -39,8 +39,8 @@
                 required
                 minlength="6"
                 #password="ngModel">
-              <mat-error *ngIf="password.hasError('required')">Mật khẩu không được để trống</mat-error>
-              <mat-error *ngIf="password.hasError('minlength')">Vui long nhap toi thieu 6 ky tu!</mat-error>
+              <mat-error *ngIf="password.hasError('required')">Password cannot be blan!k</mat-error>
+              <mat-error *ngIf="password.hasError('minlength')">Please enter at least 6 characters!</mat-error>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                       [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -54,19 +54,19 @@
                 </label>
               </div>
               <div class="col text-right">
-                <a routerLink="/forgot">Forgot Password ?</a>
+                <a routerLink="/forgot">Forgot Password?</a>
               </div>
             </div>
 
             <div class="sign-btn text-center">
-              <button style="height: 45px ;width: 120px;border-radius: 5px;color: whitesmoke" class="btn btn-theme" (click)="ngSubmit()"  type="submit" >Đăng nhập</button>
+              <button style="height: 45px ;width: 120px;border-radius: 5px;color: whitesmoke" class="btn btn-theme" (click)="ngSubmit()"  type="submit" >Login</button>
             </div>
           </form>
           <div class="register">
             <a routerLink="/">Back to Home</a>
           </div>
           <div class="register">
-            <p>Bạn không có tài khoản? <a routerLink="/signup">Tạo tài khoản</a></p>
+            <p>You don't have account? <a routerLink="/signup">Create new account</a></p>
           </div>
         </div>
       </div>

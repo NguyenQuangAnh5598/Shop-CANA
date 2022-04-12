@@ -3,7 +3,7 @@
   <app-search-customer-name></app-search-customer-name>
   <div class="card table-card">
     <div class="card-header" >
-      <h3 style="margin: auto;font-weight: 450;font-size: 25px">Danh sách Khách Hàng</h3>
+      <h3 style="margin: auto;font-weight: 450;font-size: 25px">Customer List</h3>
       <div class="card-header-right">
 
         <ul class="list-unstyled card-option">
@@ -23,7 +23,7 @@
           </ng-container>
 
           <ng-container matColumnDef="avatar">
-            <th mat-header-cell *matHeaderCellDef>Avartar</th>
+            <th mat-header-cell *matHeaderCellDef>Avatar</th>
             <td mat-cell *matCellDef="let element"><img style="width: 50px; height: 50px" [src]="element.avatar"></td>
           </ng-container>
 
@@ -62,17 +62,17 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+                      <h5 class="modal-title" id="exampleModalLongTitle">notice</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                      Bạn có muốn xóa user này không??
+                      Are you sure you want to delete this user?
                     </div>
                     <div class="modal-footer">
-                      <button (click)="deleteCustomer()" data-dismiss="modal"  type="button" class="btn btn-primary" style="border-radius: 3px;height: 40px;width: 100px;">Đồng ý</button>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius: 3px;height: 40px;width: 100px;">Đóng</button>
+                      <button (click)="deleteCustomer()" data-dismiss="modal"  type="button" class="btn btn-primary" style="border-radius: 3px;height: 40px;width: 100px;">Yes</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius: 3px;height: 40px;width: 100px;">Close</button>
                     </div>
                   </div>
                 </div>
