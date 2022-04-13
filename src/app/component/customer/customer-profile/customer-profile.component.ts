@@ -20,11 +20,13 @@ export class CustomerProfileComponent implements OnInit {
   month = this.time.getMonth() + 1;
   stringMonth: string;
   year = this.time.getFullYear();
+  token: any;
 
   constructor(private userService: UserService,
               private tokenService: TokenService,
               private route: ActivatedRoute,
               private router: Router) {
+    this.token = this.tokenService.getToken();
 
   }
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -35,7 +37,10 @@ export class CustomerProfileComponent implements OnInit {
       this.user = data;
     });
   }
-
+  logout(): void {
+    this.tokenService.logout();
+    window.location.reload();
+  }
   update(): void {
     this.userService.updateUser(this.user).subscribe(data => {
       this.router.navigate(['/home']);

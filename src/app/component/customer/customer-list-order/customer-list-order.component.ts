@@ -25,7 +25,7 @@ export class CustomerListOrderComponent implements OnInit {
   }
 
   showUnCheckOrderList(): void {
-    this.status = 'Đang chờ xác nhận';
+    this.status = 'Waiting accept';
     this.orderService.findAllOrderByUserIdAndStatusId(this.userId, 2).subscribe(data => {
       this.orderList = data;
       // tslint:disable-next-line:triple-equals
@@ -34,7 +34,7 @@ export class CustomerListOrderComponent implements OnInit {
   }
 
   showCheckedOrderList(): void {
-    this.status = 'Đang vận chuyển';
+    this.status = 'Shipping';
     this.orderService.findAllOrderByUserIdAndStatusId(this.userId, 3).subscribe(data => {
       this.orderList = data;
       console.log(this.orderList);
@@ -43,7 +43,7 @@ export class CustomerListOrderComponent implements OnInit {
   }
 
   showCompletedOrderList(): void {
-    this.status = 'Đã hoàn thành';
+    this.status = 'Completed';
     this.orderService.findAllOrderByUserIdAndStatusId(this.userId, 4).subscribe(data => {
       this.orderList = data;
       console.log(this.orderList);
@@ -51,7 +51,7 @@ export class CustomerListOrderComponent implements OnInit {
   }
 
   showCancelOrderList(): void {
-    this.status = 'Đã hủy';
+    this.status = 'Cancelled';
     this.orderService.findAllOrderByUserIdAndStatusId(this.userId, 5).subscribe(data => {
       this.orderList = data;
       console.log(this.orderList);
@@ -60,7 +60,7 @@ export class CustomerListOrderComponent implements OnInit {
 
   cancelOrder(id: number, index: any): void {
     this.orderService.cancelOrderByOrderId(id).subscribe(() => {
-      alert('Đã hủy đơn hàng');
+      alert('Order cancelled');
       this.orderList.splice(index, 1);
     });
   }
