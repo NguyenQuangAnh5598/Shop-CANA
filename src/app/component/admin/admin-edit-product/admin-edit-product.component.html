@@ -17,8 +17,8 @@
                    required
                    minlength="3"
                    #productname="ngModel" >
-            <mat-error *ngIf="productname.hasError('required')">Tên sản phẩm không được để trống!</mat-error>
-            <mat-error *ngIf="productname.hasError('minlength')">Tên sản phẩm tối thiểu 3 ký tự!</mat-error>
+            <mat-error *ngIf="productname.hasError('required')">Product name connot be blank!</mat-error>
+            <mat-error *ngIf="productname.hasError('minlength')">Pless enter at least 3 characters</mat-error>
           </mat-form-field>
           <!--end test product name-->
         </div>
@@ -38,7 +38,7 @@
                        min="0"
                        #price="ngModel" (change)="checkPrice(price.value)">
                 <span matPrefix>$&nbsp;</span>
-                <mat-error *ngIf="price.hasError('required')">Giá sản phẩm không được để trống!</mat-error>
+                <mat-error *ngIf="price.hasError('required')">Price cannot be blank!</mat-error>
               </mat-form-field>
               <!--                  end test price-->
             </div>
@@ -56,7 +56,7 @@
                 <mat-select #category="ngModel" [(ngModel)]="product.category.id" name="category" required id="category" >
                   <mat-option *ngFor="let category of categoryList" [value]="category.id">{{category.categoryName}}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="category.hasError('required')">Category không được để trống!</mat-error>
+                <mat-error *ngIf="category.hasError('required')">Category cannot be blank!</mat-error>
               </mat-form-field>
               <!--                  end test category-->
             </div>
@@ -80,7 +80,7 @@
                        placeholder="quantity..."
                        min="0"
                        #quantity="ngModel"  (change)="checkQuantity(quantity.value)">
-                <mat-error *ngIf="quantity.hasError('required')">Số lượng sản phẩm không được để trống!</mat-error>
+                <mat-error *ngIf="quantity.hasError('required')">Quantity cannot be blank!</mat-error>
               </mat-form-field>
               <!--                  end test quantity-->
             </div>
@@ -101,7 +101,7 @@
                        required
                        minlength="3"
                        #manu="ngModel">
-                <mat-error *ngIf="manu.hasError('required')">Manufacture không được để trống!</mat-error>
+                <mat-error *ngIf="manu.hasError('required')">Manufacture cannot be blank!</mat-error>
 
               </mat-form-field>
               <!--                  end test manufacture-->

@@ -13,7 +13,7 @@
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
               <a class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home"
-                 aria-selected="true" style="font-size: 30px;margin-bottom: 30px;">Thông tin khách hàng</a>
+                 aria-selected="true" style="font-size: 30px;margin-bottom: 30px;">Customer Information</a>
             </li>
           </ul>
         </div>
@@ -26,17 +26,15 @@
     <div class="row">
       <div class="col-md-4">
         <div class="profile-work"
-             style="border-right: 1px solid;margin-top: -63px;margin-left: 53px;border-right: 1px solid;margin-left: 53px;font-size: 25px;font-weight: 100;">
+             style="border-right: 1px solid;margin-top: -63px;margin-left: 53px;border-right: 1px solid;font-size: 25px;font-weight: 100;">
           <p style="font-size: 20px;">Shop</p>
-          <a class="linkhover" routerLink="/home" style="margin-left: 20px;padding: 10px 32px;border-radius: 4px;">Trang
-            chủ</a><br/>
+          <a class="linkhover" routerLink="/admin-home" style="margin-left: 20px;padding: 10px 32px;border-radius: 4px;">Customer List</a><br/>
           <a class="linkhover" routerLink="/admin-home/admin-revenue"
-             style="margin-left: 20px;padding: 10px 32px;border-radius: 4px;">Doanh thu</a><br/>
+             style="margin-left: 20px;padding: 10px 32px;border-radius: 4px;">Revenue</a><br/>
           <a class="linkhover" routerLink="/admin-home/admin-list-product"
-             style="margin-left: 20px;padding: 10px 32px;border-radius: 4px;">Sản phẩm</a>
-          <p style="font-size: 20px;">Tài khoản</p>
-          <a class="linkhover" href="" style="margin-left: 20px;padding: 10px 32px;border-radius: 4px;">Đăng
-            xuất</a><br/>
+             style="margin-left: 20px;padding: 10px 32px;border-radius: 4px;">Product List</a>
+          <p style="font-size: 20px;">Account</p>
+          <a class="linkhover" href="" style="margin-left: 20px;padding: 10px 32px;border-radius: 4px;">Logout</a><br/>
         </div>
       </div>
       <div class="col-md-8">
@@ -44,7 +42,7 @@
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
               <div class="col-md-5">
-                <label>Tên tài khoản</label>
+                <label>User Name</label>
               </div>
               <div class="col-md-6">
                 <p style="font-size: 20px">{{user.username}}</p>
@@ -55,15 +53,15 @@
 
               <div class="row">
                 <div class="col-md-5">
-                  <label for="name" style="margin-top: 15px">Tên khách hàng</label>
+                  <label for="name" style="margin-top: 15px">Full name</label>
                 </div>
                 <div class="col-md-6">
                   <input type="text" class="form-control" id="name" required minlength="6"
                          [(ngModel)]="user.name" style="width: 400px; padding: 10px; margin-top: 10px;"
                          name="name" #n="ngModel">
-                  <mat-error style="margin-bottom: 10px;" *ngIf="n.hasError('required')">Họ tên không được để trống!
+                  <mat-error style="margin-bottom: 10px;" *ngIf="n.hasError('required')">Cannot be blank!
                   </mat-error>
-                  <mat-error style="margin-bottom: 10px;" *ngIf="n.hasError('minlength')">Họ tên tối thiểu phải có 6 ký tự!</mat-error>
+                  <mat-error style="margin-bottom: 10px;" *ngIf="n.hasError('minlength')">Please enter at least 6 characters!</mat-error>
                 </div>
               </div>
 
@@ -77,10 +75,10 @@
                          [(ngModel)]="user.email" style="width: 400px;padding: 10px; margin-top: 10px;"
                          name="email">
                   <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                    Hãy nhập email đúng định dạng!
+                    Please enter your email in the correct format!
                   </mat-error>
                   <mat-error *ngIf="emailFormControl.hasError('required')">
-                    Email không được để trống!
+                    Email cannot blank!
                   </mat-error>
                 </div>
               </div>
@@ -88,22 +86,22 @@
 
               <div class="row">
                 <div class="col-md-5">
-                  <label for="address" style="margin-top: 15px;">Địa chỉ</label>
+                  <label for="address" style="margin-top: 15px;">Address</label>
                 </div>
                 <div class="col-md-6">
                   <input type="text" required minlength="6" class="form-control" id="address"
                          [(ngModel)]="user.address" style="width: 400px;padding: 10px;margin-top: 10px;"
                          name="address" #add="ngModel">
-                  <mat-error style="margin-bottom: 10px;" *ngIf="add.hasError('required')">Địa chỉ không được để trống!
+                  <mat-error style="margin-bottom: 10px;" *ngIf="add.hasError('required')">Address cannot be blank!
                   </mat-error>
-                  <mat-error style="margin-bottom: 10px;" *ngIf="add.hasError('minlength')">Địa chỉ tối thiểu phải có 6 ký tự!</mat-error>
+                  <mat-error style="margin-bottom: 10px;" *ngIf="add.hasError('minlength')">Please enter at least 6 characters!</mat-error>
                 </div>
               </div>
 
 
               <div class="row">
                 <div class="col-md-5">
-                  <label for="dob" style="margin-top: 15px;">Ngày sinh</label>
+                  <label for="dob" style="margin-top: 15px;">Date of birth</label>
                 </div>
                 <div class="col-md-6">
                   <input id="dob" type="date" class="form-control" [(ngModel)]="user.dob"
@@ -116,22 +114,22 @@
 
               <div class="row">
                 <div class="col-md-5">
-                  <label for="phone" style="margin-top: 15px;"> Số điện thoại</label>
+                  <label for="phone" style="margin-top: 15px;">Phone number</label>
                 </div>
                 <div class="col-md-6">
                   <input type="text" pattern="[0-9]{9,10}" required class="form-control" id="phone"
                          [(ngModel)]="user.phone"
                          style="width: 400px;padding: 10px;margin-top: 10px;margin-bottom: 30px;"
                          name="phone" #sdt="ngModel">
-                  <mat-error *ngIf="sdt.hasError('required')">Số điện thoại không được để trống!</mat-error>
-                  <mat-error *ngIf="sdt.hasError('pattern')">Vui lòng nhập ký tự số, tối thiểu 9 ký tự, tối đa 10 ký tự!
+                  <mat-error *ngIf="sdt.hasError('required')">Phone number cannot be blank!</mat-error>
+                  <mat-error *ngIf="sdt.hasError('pattern')">Please enter number, min 9 characters, max 10 characters!
                   </mat-error>
                 </div>
               </div>
             </form>
             <div class="row">
               <div class="col-md-5">
-                <label style="margin-top: 15px;">Ảnh đại diện</label>
+                <label style="margin-top: 15px;">Avatar</label>
               </div>
               <div class="col-md-6">
                 <app-upload-file (giveUrl)="uploadFile($event)"></app-upload-file>

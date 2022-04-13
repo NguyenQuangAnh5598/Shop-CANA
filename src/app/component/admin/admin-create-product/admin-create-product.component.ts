@@ -21,7 +21,6 @@ export class AdminCreateProductComponent implements OnInit {
     // @ts-ignore
     category: Category
   };
-  demo = new Date();
 
   form: any = {};
   categoryList: Category[] = [];

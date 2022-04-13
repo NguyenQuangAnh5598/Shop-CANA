@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment.prod';
 import {Product} from '../model/Product';
+import {Commentt} from '../model/Commentt';
 
 const API_LOCAL = `${environment.API_LOCAL}`;
 
@@ -43,5 +44,19 @@ export class ProductService {
 
   getTop3Product(): Observable<any> {
     return this.http.get<any>(API_LOCAL + 'product/top3BestSale');
+  }
+
+  findAllCommentByProductId(id: any): Observable<Commentt[]> {
+    return this.http.post<Commentt[]>(API_LOCAL + 'comment/showAllComment', id);
+  }
+
+  createNewComment(comment: Commentt): Observable<Commentt> {
+    // console.log(comment);
+    return this.http.post<Commentt>(API_LOCAL + 'comment', comment);
+  }
+
+  // tslint:disable-next-line:typedef
+  deleteComment(id: number){
+    return this.http.delete(API_LOCAL + 'comment/' + id);
   }
 }

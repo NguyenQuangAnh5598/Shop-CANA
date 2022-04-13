@@ -12,10 +12,10 @@
   </button>
   <div style="margin-left: 50px; font-size: 20px;" class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div  class="navbar-nav" (click)="onButtonClick($event)">
-      <a class="nav-item nav-link active" (click)="showUnCheckOrderList()">Chờ<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" (click)="showCheckedOrderList()">Đang vận chuyển</a>
-      <a class="nav-item nav-link" (click)="showCompletedOrderList()">Đã hoàn thành</a>
-      <a class="nav-item nav-link" (click)="showCancelOrderList()">Đã hủy</a>
+      <a class="nav-item nav-link active" (click)="showUnCheckOrderList()">Waiting order<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" (click)="showCheckedOrderList()">Shipping order</a>
+      <a class="nav-item nav-link" (click)="showCompletedOrderList()">Completed order</a>
+      <a class="nav-item nav-link" (click)="showCancelOrderList()">Cancelled order</a>
     </div>
   </div>
 </nav>
@@ -56,7 +56,7 @@
             </div>
             <div class="job-right my-4 flex-shrink-0">
               <a style="margin-left: 40px; padding: 6px 0px;" *ngIf="order.statusId == 2" (click)="cancelOrder(order.id, i)"
-                 class="btn btn-item d-block w-100 d-sm-inline-block btn-light">Hủy đơn</a>
+                 class="btn btn-item d-block w-100 d-sm-inline-block btn-light">Cancel order</a>
             </div>
             <div class="job-right my-4 flex-shrink-0">
               <a  routerLink="/home/order-detail/{{order.id}}" class="btn btn-item d-block w-100 d-sm-inline-block btn-light">Detail</a>
