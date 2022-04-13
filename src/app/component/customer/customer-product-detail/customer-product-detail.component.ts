@@ -9,9 +9,9 @@ import {EmitService} from '../../../service/emit.service';
 import {CountChangeDTO} from '../../../model/CountChangeDTO';
 import {User} from '../../../model/User';
 import {UserService} from '../../../service/user.service';
-import {Commentt} from '../../../model/Commentt';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
+import {Commentt} from '../../../model/Commentt';
 
 @Component({
   selector: 'app-customer-product-detail',
@@ -104,23 +104,29 @@ export class CustomerProductDetailComponent implements OnInit {
   createNewComment(): void {
     console.log(this.text);
     console.log(this.commentList);
-    this.userId = this.tokenService.getUserId();
-    this.userService.getUserById(this.userId).subscribe(data => {
-      this.comment = {
-        textt: this.text,
-        productId: this.productId,
-        user: data
-      };
-      console.log(this.comment);
-      if (this.comment.textt !== '') {
-        this.productService.createNewComment(this.comment).subscribe(() => {
-          this.findAllComment();
-          this.status = '';
-        });
-      } else {
-        this.status = 'Comment can not empty!';
-      }
-    });
+    if (this.tokenService.getToken() !== null){
+      this.userId = this.tokenService.getUserId();
+      this.userService.getUserById(this.userId).subscribe(data => {
+        this.comment = {
+          textt: this.text,
+          productId: this.productId,
+          user: data
+        };
+        console.log(this.comment);
+        if (this.comment.textt !== '') {
+          this.productService.createNewComment(this.comment).subscribe(() => {
+            this.findAllComment();
+            this.status = '';
+            this.text = '';
+          });
+        } else {
+          this.status = 'Comment can not empty!';
+        }
+      });
+    } else {
+      alert('Xin hãy đăng nhập');
+      this.router.navigate(['/login']);
+    }
   }
 
   findAllComment(): void {

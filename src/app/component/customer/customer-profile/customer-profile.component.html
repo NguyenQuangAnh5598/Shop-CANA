@@ -34,7 +34,7 @@
           <a class="linkhover" routerLink="/home/customer-payment" style="margin-left: 0px;padding: 10px 32px;border-radius: 4px;">Shopping cart</a><br/>
           <a class="linkhover" routerLink="/home/customer-list-order" style="margin-left: 0px;padding: 10px 32px;border-radius: 4px;">Orders</a>
           <p style="font-size: 20px;">Account</p>
-          <a class="linkhover" href="" style="margin-left: 0px;padding: 20px 32px;border-radius: 4px;">Logout</a><br/>
+          <a class="linkhover"  (click)="logout()" *ngIf="token != null" style="margin-left: 0px;padding: 20px 32px;border-radius: 4px;">Logout</a><br/>
           <a class="linkhover" href="" style="margin-left: 20px;padding: 10px 10px;border-radius: 4px;">Change password</a>
         </div>
       </div>
