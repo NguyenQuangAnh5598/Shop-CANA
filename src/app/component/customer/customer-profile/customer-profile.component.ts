@@ -42,9 +42,7 @@ export class CustomerProfileComponent implements OnInit {
     window.location.reload();
   }
   update(): void {
-    this.userService.updateUser(this.user).subscribe(data => {
-      this.router.navigate(['/home']);
-    });
+    this.userService.updateUser(this.user).subscribe();
   }
 
   ngOnInit(): void {

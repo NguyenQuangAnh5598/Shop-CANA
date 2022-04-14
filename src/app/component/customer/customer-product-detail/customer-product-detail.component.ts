@@ -38,6 +38,7 @@ export class CustomerProductDetailComponent implements OnInit {
   dataSource: any;
   p = 1;
   avatar: string;
+  tmp : any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   form: any = {};
@@ -61,6 +62,7 @@ export class CustomerProductDetailComponent implements OnInit {
     this.findProductById();
     this.findAllComment();
     this.avatar = this.tokenService.getAvatar();
+    this.tmp = this.tokenService.getUserId();
   }
 
   createOrderDetail(): void {
